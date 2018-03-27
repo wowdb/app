@@ -1,9 +1,37 @@
 {
+  "name": "bigglesworth",
+  "version": "1.0.0",
+  "description": "Mr Bigglesworth helps you find World of Warcraft information on the go",
+  "private": true,
+  "license": "MIT",
+  "author": {
+    "name": "Ali Zahid",
+    "email": "ali.zahid@live.com",
+    "url": "https://designplox.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alizahid/bigglesworth"
+  },
   "main": "node_modules/expo/AppEntry.js",
   "private": true,
+  "scripts": {
+    "precommit": "lint-staged"
+  },
   "dependencies": {
     "expo": "^25.0.0",
     "react": "16.2.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-25.0.0.tar.gz"
+  },
+  "devDependencies": {
+    "husky": "^0.14.3",
+    "lint-staged": "^7.0.0",
+    "prettier": "^1.11.1"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write --single-quote --no-semi --trailing-comma none",
+      "git add"
+    ]
   }
 }
