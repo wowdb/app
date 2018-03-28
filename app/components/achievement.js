@@ -7,7 +7,7 @@ import { Colors, Layout } from '../styles'
 
 export default class Achievement extends Component {
   render() {
-    const { title, icon, onPress } = this.props
+    const { title, icon, points, onPress } = this.props
 
     const image = {
       uri: `https://render-eu.worldofwarcraft.com/icons/56/${icon}.jpg`
@@ -20,6 +20,7 @@ export default class Achievement extends Component {
           <Image source={border} style={styles.border} />
         </View>
         <Text style={styles.title}>{title}</Text>
+        <Text style={styles.points}>{points}</Text>
       </Touchable>
     )
   }
@@ -45,6 +46,9 @@ const styles = StyleSheet.create({
   title: {
     color: Colors.text,
     flex: 1,
-    marginLeft: Layout.margin
+    marginHorizontal: Layout.margin
+  },
+  points: {
+    color: Colors.textDark
   }
 })

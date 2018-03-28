@@ -7,7 +7,7 @@ import { Colors, Layout } from '../styles'
 
 export default class Item extends Component {
   render() {
-    const { name, icon, quality, onPress } = this.props
+    const { name, icon, quality, itemLevel, onPress } = this.props
 
     const image = {
       uri: `https://render-eu.worldofwarcraft.com/icons/56/${icon}.jpg`
@@ -24,6 +24,7 @@ export default class Item extends Component {
           <Image source={border} style={styles.border} />
         </View>
         <Text style={[styles.name, color]}>{name}</Text>
+        <Text style={styles.level}>{itemLevel}</Text>
       </Touchable>
     )
   }
@@ -48,6 +49,9 @@ const styles = StyleSheet.create({
   },
   name: {
     flex: 1,
-    marginLeft: Layout.margin
+    marginHorizontal: Layout.margin
+  },
+  level: {
+    color: Colors.textDark
   }
 })
