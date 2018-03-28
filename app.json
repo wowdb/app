@@ -8,11 +8,11 @@
     "platforms": ["ios", "android"],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./artwork/icon.png",
     "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "image": "./artwork/splash.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#282b2b"
     }
   }
 }

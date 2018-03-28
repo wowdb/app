@@ -1,21 +1,15 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { Provider } from 'react-redux'
 
-export default class App extends Component {
+import App from './app/index'
+import store from './app/store'
+
+export default class Bigglesworth extends Component {
   render() {
     return (
-      <View style={styles.main}>
-        <Text>Mr Bigglesworth</Text>
-      </View>
+      <Provider store={store}>
+        <App />
+      </Provider>
     )
   }
 }
-
-const styles = StyleSheet.create({
-  main: {
-    alignItems: 'center',
-    backgroundColor: '#fff',
-    flex: 1,
-    justifyContent: 'center'
-  }
-})
