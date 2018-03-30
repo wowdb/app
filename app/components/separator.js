@@ -5,7 +5,9 @@ import { Colors } from '../styles'
 
 export default class Separator extends Component {
   render() {
-    return <View style={styles.main} />
+    const { style } = this.props
+
+    return <View style={[styles.main, style]} />
   }
 }
 

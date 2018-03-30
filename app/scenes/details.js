@@ -24,7 +24,8 @@ class Details extends Component {
 
   state = {
     sort: 'date',
-    reverse: true
+    reverse: true,
+    visible: new Map()
   }
 
   componentDidMount() {
@@ -48,6 +49,20 @@ class Details extends Component {
 
     this.setState({
       sort: sort === 'date' ? 'rating' : 'date'
+    })
+  }
+
+  toggleReplies = id => {
+    this.setState(state => {
+      const { visible } = state
+
+      const current = visible.get(id)
+
+      visible.set(id, !current)
+
+      return {
+        visible
+      }
     })
   }
 
@@ -76,8 +91,32 @@ class Details extends Component {
     return <Text style={styles.empty}>Nothing found</Text>
   }
 
+  renderReply = item => {
+    const { id, body, user, rating, date } = item
+
+    const color = {
+      color: rating > 10 ? Colors.comments.green : Colors.text
+    }
+
+    return (
+      <View key={id} style={styles.reply}>
+        <Separator style={styles.replySeparator} />
+        <Text style={styles.replyBody}>{body}</Text>
+        <View style={styles.footer}>
+          <Text style={[styles.rating, color]}>{rating}</Text>
+          <Text style={styles.meta}>{user}</Text>
+          <Text style={styles.meta}>{moment(date).fromNow()}</Text>
+        </View>
+      </View>
+    )
+  }
+
   renderItem = item => {
-    const { body, user, rating, date } = item
+    const { visible } = this.state
+
+    const { id, body, user, rating, date, replies } = item
+
+    const show = visible.get(id)
 
     const color = {
       color: rating > 10 ? Colors.comments.green : Colors.text
@@ -88,9 +127,17 @@ class Details extends Component {
         <Text style={styles.body}>{body}</Text>
         <View style={styles.footer}>
           <Text style={[styles.rating, color]}>{rating}</Text>
-          <Text style={styles.user}>{user}</Text>
-          <Text style={styles.date}>{moment(date).fromNow()}</Text>
+          <Text style={styles.meta}>{user}</Text>
+          <Text style={styles.meta}>{moment(date).fromNow()}</Text>
+          {replies.length > 0 && (
+            <Touchable onPress={() => this.toggleReplies(id)}>
+              <Text style={styles.meta}>{show ? 'Hide' : 'Show'} replies</Text>
+            </Touchable>
+          )}
         </View>
+        {show && (
+          <View style={styles.replies}>{replies.map(this.renderReply)}</View>
+        )}
       </View>
     )
   }
@@ -161,15 +208,23 @@ const styles = StyleSheet.create({
     color: Colors.text,
     fontSize: 12
   },
-  user: {
+  meta: {
     color: Colors.textDark,
     fontSize: 12,
     marginLeft: Layout.margin
   },
-  date: {
-    color: Colors.textDark,
-    fontSize: 12,
+  replies: {
     marginLeft: Layout.margin
+  },
+  reply: {
+    marginTop: Layout.margin
+  },
+  replySeparator: {
+    marginBottom: Layout.margin
+  },
+  replyBody: {
+    color: Colors.text,
+    fontSize: 12
   },
   loading: {
     alignItems: 'center',
