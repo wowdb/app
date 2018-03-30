@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, Keyboard, StyleSheet, Text, View } from 'react-native'
 import { connect } from 'react-redux'
 
 import { bigglesworth } from '../assets'
@@ -29,6 +29,8 @@ class Search extends Component {
       navigate('results', {
         query
       })
+
+      Keyboard.dismiss()
     }
   }
 
@@ -38,10 +40,11 @@ class Search extends Component {
     return (
       <Main>
         <Main style={styles.main}>
-          <Image style={styles.bigglesworth} source={bigglesworth} />
+          <View style={styles.logo}>
+            <Image style={styles.bigglesworth} source={bigglesworth} />
+          </View>
           <Text style={styles.about}>
-            Mr Bigglesworth helps you find World of Warcraft information on the
-            go
+            Mr Bigglesworth helps you find World of Warcraft data on the go
           </Text>
         </Main>
         <View style={styles.search}>
@@ -67,11 +70,15 @@ const styles = StyleSheet.create({
   main: {
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: '20%'
+    paddingHorizontal: '30%'
+  },
+  logo: {
+    ...Colors.shadow
   },
   bigglesworth: {
-    height: 200 / 2,
-    width: 208 / 2
+    borderRadius: Layout.borderRadius * 2,
+    height: 100,
+    width: 100
   },
   about: {
     color: Colors.textDark,

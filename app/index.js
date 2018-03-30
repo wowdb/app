@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import {
   KeyboardAvoidingView,
-  Platform,
   SafeAreaView,
   StatusBar,
   StyleSheet,
@@ -21,14 +20,12 @@ export const Navigator = StackNavigator({
 
 export default class Bigglesworth extends Component {
   render() {
-    const Main = Platform.OS === 'android' ? View : KeyboardAvoidingView
-
     return (
       <SafeAreaView style={styles.main}>
         <StatusBar backgroundColor={Colors.accent} barStyle="light-content" />
-        <Main style={styles.main} behavior="padding">
+        <KeyboardAvoidingView style={styles.main} behavior="padding">
           <Navigator />
-        </Main>
+        </KeyboardAvoidingView>
       </SafeAreaView>
     )
   }

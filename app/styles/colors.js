@@ -12,6 +12,17 @@ export default {
   text: '#fff',
   textDark: '#666',
 
+  shadow: {
+    elevation: 2,
+    shadowColor: 'black',
+    shadowOffset: {
+      height: 0,
+      width: 0
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4
+  },
+
   items: {
     artifact: '#e5cc80',
     heirloom: '#0cf',
