@@ -62,8 +62,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: '20%'
   },
   bigglesworth: {
-    height: 80,
-    width: 104
+    height: 200 / 2,
+    width: 208 / 2
   },
   about: {
     color: Colors.textDark,
