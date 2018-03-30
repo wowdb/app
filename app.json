@@ -4,7 +4,7 @@
     "description": "Mr Bigglesworth helps you find World of Warcraft information on the go",
     "slug": "bigglesworth",
     "privacy": "public",
-    "sdkVersion": "25.0.0",
+    "sdkVersion": "26.0.0",
     "platforms": ["ios", "android"],
     "version": "1.0.0",
     "orientation": "portrait",
@@ -13,6 +13,24 @@
       "image": "./artwork/splash.png",
       "resizeMode": "cover",
       "backgroundColor": "#282b2b"
+    },
+    "hooks": {
+      "postPublish": [
+        {
+          "file": "sentry-expo/upload-sourcemaps",
+          "config": {
+            "organization": "designplox",
+            "project": "bigglesworth",
+            "authToken": "b9adb1724ea245d0b2065063ba6bc6eea8e76f81c10b4b14adb6921ccd620c15"
+          }
+        }
+      ]
     }
+  },
+  "assetBundlePatterns": [
+    "**/*"
+  ],
+  "updates": {
+    "fallbackToCacheTimeout": 0
   }
 }
