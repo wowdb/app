@@ -85,7 +85,7 @@ class Details extends Component {
 
     return (
       <View style={styles.header}>
-        <Text style={styles.title}>Comments</Text>
+        <Text style={styles.subtitle}>Comments from Wowhead</Text>
         <View style={styles.sort}>
           <Touchable onPress={this.toggleSort}>
             <Text style={styles.sortLabel}>{capitalize(sort)}</Text>
@@ -191,9 +191,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between'
   },
-  title: {
-    ...Fonts.subtitle,
+  subtitle: {
     color: Colors.text,
+    fontWeight: Fonts.weight.semibold,
     marginHorizontal: Layout.margin
   },
   sort: {
