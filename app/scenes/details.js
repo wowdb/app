@@ -73,14 +73,14 @@ class Details extends Component {
       <View style={styles.header}>
         <Text style={styles.title}>Comments</Text>
         <View style={styles.sort}>
+          <Touchable onPress={this.toggleSort}>
+            <Text style={styles.sortLabel}>{capitalize(sort)}</Text>
+          </Touchable>
           <Touchable onPress={this.toggleReverse}>
             <Image
               style={styles.sortIcon}
               source={reverse ? sort_down : sort_up}
             />
-          </Touchable>
-          <Touchable onPress={this.toggleSort}>
-            <Text style={styles.sortLabel}>{capitalize(sort)}</Text>
           </Touchable>
         </View>
       </View>
@@ -130,7 +130,10 @@ class Details extends Component {
           <Text style={styles.meta}>{user}</Text>
           <Text style={styles.meta}>{moment(date).fromNow()}</Text>
           {replies.length > 0 && (
-            <Touchable onPress={() => this.toggleReplies(id)}>
+            <Touchable
+              style={styles.toggleReplies}
+              onPress={() => this.toggleReplies(id)}
+            >
               <Text style={styles.meta}>{show ? 'Hide' : 'Show'} replies</Text>
             </Touchable>
           )}
@@ -176,12 +179,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: Colors.backgroundLight,
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    padding: Layout.margin
+    justifyContent: 'space-between'
   },
   title: {
     ...Fonts.subtitle,
-    color: Colors.text
+    color: Colors.text,
+    marginHorizontal: Layout.margin
   },
   sort: {
     alignItems: 'center',
@@ -189,10 +192,12 @@ const styles = StyleSheet.create({
   },
   sortIcon: {
     height: 20,
+    margin: Layout.margin,
     width: 20
   },
   sortLabel: {
-    color: Colors.text
+    color: Colors.text,
+    margin: Layout.margin
   },
   comment: {
     padding: Layout.margin
@@ -212,6 +217,10 @@ const styles = StyleSheet.create({
     color: Colors.textDark,
     fontSize: 12,
     marginLeft: Layout.margin
+  },
+  toggleReplies: {
+    margin: -Layout.margin,
+    padding: Layout.margin
   },
   replies: {
     marginLeft: Layout.margin
