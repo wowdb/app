@@ -6,7 +6,7 @@ export default {
   background: '#131615',
   backgroundLight: '#282b2b',
 
-  border: 'rgba(255, 255, 255, 0.05)',
+  border: 'rgba(255, 255, 255, 0.075)',
   modal: 'rgba(0, 0, 0, 0.85)',
 
   text: '#fff',
@@ -21,5 +21,12 @@ export default {
     uncommon: '#1eff00',
     common: '#fff',
     poor: '#9d9d9d'
+  },
+  comments: {
+    blue: '#00c0ff',
+    green: '#5df644',
+    gold: '#d7cea4',
+    red: '#ff8000',
+    pink: '#ff99ff'
   }
 }

@@ -23,7 +23,7 @@ class Results extends Component {
   static navigationOptions = ({
     navigation: { goBack, state: { params: { query } } }
   }) => ({
-    header: <NavBar title={`Results for "${query}"`} goBack={goBack} />
+    header: <NavBar title={query} subtitle="Search" goBack={goBack} />
   })
 
   state = {
@@ -59,6 +59,15 @@ class Results extends Component {
     }
   }
 
+  navigate = (item, type) => {
+    const { navigation: { navigate } } = this.props
+
+    navigate('details', {
+      item,
+      type
+    })
+  }
+
   renderSection = item => {
     const { active } = this.state
 
@@ -79,13 +88,15 @@ class Results extends Component {
   renderItem = (section, item) => {
     switch (section) {
       case 'achievements':
-        return <Achievement {...item} />
+        return (
+          <Achievement {...item} onPress={() => this.navigate(item, section)} />
+        )
 
       case 'items':
-        return <Item {...item} />
+        return <Item {...item} onPress={() => this.navigate(item, section)} />
 
       case 'quests':
-        return <Quest {...item} />
+        return <Quest {...item} onPress={() => this.navigate(item, section)} />
     }
   }
 

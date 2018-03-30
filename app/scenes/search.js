@@ -12,11 +12,7 @@ class Search extends Component {
   }
 
   state = {
-    query: 'flying'
-  }
-
-  componentDidMount() {
-    this.search()
+    query: ''
   }
 
   search = () => {
@@ -42,6 +38,8 @@ class Search extends Component {
         <View style={styles.search}>
           <TextBox
             style={styles.textbox}
+            autoCapitalize="none"
+            autoCorrect={false}
             placeholder="Gul'dan"
             onChangeText={query => this.setState({ query })}
             value={query}

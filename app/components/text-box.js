@@ -21,13 +21,22 @@ export default class TextBox extends Component {
   }
 
   render() {
-    const { placeholder, style, value, onChangeText } = this.props
+    const {
+      autoCapitalize,
+      autoCorrect,
+      placeholder,
+      style,
+      value,
+      onChangeText
+    } = this.props
     const { focused } = this.state
 
     return (
       <View style={[styles.main, focused && styles.focused, style]}>
         <TextInput
           style={styles.input}
+          autoCapitalize={autoCapitalize}
+          autoCorrect={autoCorrect}
           onBlur={this.onBlur}
           onChangeText={onChangeText}
           onFocus={this.onFocus}

@@ -13,13 +13,16 @@ export default class NavBar extends Component {
   }
 
   render() {
-    const { title } = this.props
+    const { title, subtitle } = this.props
 
     return (
       <View style={styles.main}>
         <Touchable onPress={this.back}>
           <Image style={styles.back} source={back} />
         </Touchable>
+        {!!subtitle && (
+          <Text style={styles.subtitle}>{subtitle.toUpperCase()}</Text>
+        )}
         <Text style={styles.title}>{title}</Text>
       </View>
     )
@@ -29,12 +32,18 @@ export default class NavBar extends Component {
 const styles = StyleSheet.create({
   main: {
     alignItems: 'flex-start',
-    backgroundColor: Colors.background
+    backgroundColor: Colors.backgroundLight
   },
   back: {
     height: 20,
     margin: Layout.margin,
     width: 20
+  },
+  subtitle: {
+    color: Colors.text,
+    fontSize: 12,
+    marginBottom: Layout.padding,
+    marginHorizontal: Layout.margin
   },
   title: {
     ...Fonts.title,
