@@ -31,9 +31,21 @@ class Details extends Component {
   componentDidMount() {
     const { item, type, getComments } = this.props
 
-    const { id } = item
+    const { id, itemId, creatureId, spellId } = item
 
-    getComments(id, type)
+    let actualType
+
+    if (id) {
+      actualType = type
+    } else if (itemId) {
+      actualType = 'items'
+    } else if (creatureId) {
+      actualType = 'npcs'
+    } else if (spellId) {
+      actualType = 'spells'
+    }
+
+    getComments(id || itemId || creatureId || spellId, actualType)
   }
 
   toggleReverse = () => {
@@ -171,6 +183,7 @@ class Details extends Component {
         {!loading && (
           <FlatList
             data={comments}
+            initialNumToRender={5}
             ItemSeparatorComponent={Separator}
             keyExtractor={item => item.id}
             ListEmptyComponent={this.renderEmpty}

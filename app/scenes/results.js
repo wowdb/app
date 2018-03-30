@@ -10,12 +10,16 @@ import {
   Button,
   Item,
   Main,
+  Mount,
   NavBar,
+  NPC,
+  Pet,
   Quest,
   Separator,
   Spinner,
   TextBox,
-  Touchable
+  Touchable,
+  Zone
 } from '../components'
 import { Colors, Fonts, Layout } from '../styles'
 
@@ -69,12 +73,13 @@ class Results extends Component {
   }
 
   renderSection = item => {
+    const { data } = this.props
     const { active } = this.state
 
     return (
       <Touchable onPress={() => this.setActive(item)}>
         <Text style={[styles.section, active === item && styles.active]}>
-          {capitalize(item)}
+          {item === 'npcs' ? 'NPCs' : capitalize(item)} ({data[item].length})
         </Text>
         {active === item && <View style={styles.activeLine} />}
       </Touchable>
@@ -95,8 +100,20 @@ class Results extends Component {
       case 'items':
         return <Item {...item} onPress={() => this.navigate(item, section)} />
 
+      case 'mounts':
+        return <Mount {...item} onPress={() => this.navigate(item, section)} />
+
+      case 'npcs':
+        return <NPC {...item} onPress={() => this.navigate(item, section)} />
+
+      case 'pets':
+        return <Pet {...item} onPress={() => this.navigate(item, section)} />
+
       case 'quests':
         return <Quest {...item} onPress={() => this.navigate(item, section)} />
+
+      case 'zones':
+        return <Zone {...item} onPress={() => this.navigate(item, section)} />
     }
   }
 
@@ -128,8 +145,11 @@ class Results extends Component {
                 <View key={section}>
                   <FlatList
                     data={data[section]}
+                    initialNumToRender={5}
                     ItemSeparatorComponent={Separator}
-                    keyExtractor={item => item.id}
+                    keyExtractor={item =>
+                      item.id || item.itemId || item.creatureId || item.spellId
+                    }
                     ListEmptyComponent={this.renderEmpty}
                     renderItem={({ item }) => this.renderItem(section, item)}
                   />
