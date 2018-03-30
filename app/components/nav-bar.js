@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, Platform, StyleSheet, Text, View } from 'react-native'
 
 import { Touchable } from '.'
 import { back } from '../assets'
@@ -32,7 +32,8 @@ export default class NavBar extends Component {
 const styles = StyleSheet.create({
   main: {
     alignItems: 'flex-start',
-    backgroundColor: Colors.backgroundLight
+    backgroundColor: Colors.backgroundLight,
+    paddingTop: Platform.OS === 'android' ? Expo.Constants.statusBarHeight : 0
   },
   back: {
     height: 20,
