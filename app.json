@@ -14,6 +14,14 @@
       "resizeMode": "cover",
       "backgroundColor": "#282b2b"
     },
+    "ios": {
+      "bundleIdentifier": "com.designplox.wowhead",
+      "buildNumber": "1"
+    },
+    "android": {
+      "package": "com.designplox.wowhead",
+      "versionCode": 1
+    },
     "hooks": {
       "postPublish": [
         {
@@ -25,12 +33,9 @@
           }
         }
       ]
-    }
-  },
-  "assetBundlePatterns": [
-    "**/*"
-  ],
-  "updates": {
-    "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ]
   }
 }

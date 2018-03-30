@@ -70,15 +70,14 @@ const styles = StyleSheet.create({
   main: {
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: '30%'
+    paddingHorizontal: '20%'
   },
   logo: {
     ...Colors.shadow
   },
   bigglesworth: {
-    borderRadius: Layout.borderRadius * 2,
-    height: 100,
-    width: 100
+    height: 265 / 2,
+    width: 235 / 2
   },
   about: {
     color: Colors.textDark,
