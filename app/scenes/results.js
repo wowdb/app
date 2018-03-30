@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   empty: {
-    color: Colors.text,
+    color: Colors.textDark,
     margin: Layout.margin
   }
 })
