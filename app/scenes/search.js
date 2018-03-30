@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
   main: {
     alignItems: 'center',
     justifyContent: 'center',
-    padding: Layout.margin * 2
+    paddingHorizontal: '20%'
   },
   bigglesworth: {
     height: 80,
