@@ -4,22 +4,6 @@ import { StyleSheet, TextInput, View } from 'react-native'
 import { Colors, Layout } from '../styles'
 
 export default class TextBox extends Component {
-  state = {
-    focused: false
-  }
-
-  onFocus = () => {
-    this.setState({
-      focused: true
-    })
-  }
-
-  onBlur = () => {
-    this.setState({
-      focused: false
-    })
-  }
-
   render() {
     const {
       autoCapitalize,
@@ -29,17 +13,14 @@ export default class TextBox extends Component {
       value,
       onChangeText
     } = this.props
-    const { focused } = this.state
 
     return (
-      <View style={[styles.main, focused && styles.focused, style]}>
+      <View style={[styles.main, style]}>
         <TextInput
           style={styles.input}
           autoCapitalize={autoCapitalize}
           autoCorrect={autoCorrect}
-          onBlur={this.onBlur}
           onChangeText={onChangeText}
-          onFocus={this.onFocus}
           placeholder={placeholder}
           placeholderTextColor={Colors.textDark}
           underlineColorAndroid="transparent"
@@ -53,16 +34,11 @@ export default class TextBox extends Component {
 const styles = StyleSheet.create({
   main: {
     backgroundColor: Colors.backgroundLight,
-    borderColor: Colors.border,
-    borderRadius: Layout.borderRadius,
-    borderWidth: 1
-  },
-  focused: {
-    borderColor: Colors.primary
+    borderRadius: Layout.borderRadius
   },
   input: {
     color: Colors.text,
-    height: Layout.textboxHeight - 2,
+    height: Layout.textboxHeight,
     paddingHorizontal: Layout.margin
   }
 })
