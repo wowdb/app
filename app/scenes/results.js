@@ -153,7 +153,12 @@ class Results extends Component {
                     initialNumToRender={5}
                     ItemSeparatorComponent={Separator}
                     keyExtractor={item =>
-                      item.id || item.itemId || item.creatureId || item.spellId
+                      String(
+                        item.id ||
+                          item.itemId ||
+                          item.creatureId ||
+                          item.spellId
+                      )
                     }
                     ListEmptyComponent={this.renderEmpty}
                     renderItem={({ item }) => this.renderItem(section, item)}

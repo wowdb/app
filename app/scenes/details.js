@@ -185,7 +185,7 @@ class Details extends Component {
             data={comments}
             initialNumToRender={5}
             ItemSeparatorComponent={Separator}
-            keyExtractor={item => item.id}
+            keyExtractor={item => String(item.id)}
             ListEmptyComponent={this.renderEmpty}
             ListHeaderComponent={this.renderHeader}
             refreshing={loading}
