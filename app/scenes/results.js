@@ -21,6 +21,7 @@ import {
   Touchable,
   Zone
 } from '../components'
+import { segment } from '../lib'
 import { Colors, Fonts, Layout } from '../styles'
 
 class Results extends Component {
@@ -38,10 +39,14 @@ class Results extends Component {
     const { query, search } = this.props
 
     search(query)
+
+    segment.screenWithProperties('results', {
+      query
+    })
   }
 
   setActive = data => {
-    const { sections } = this.props
+    const { query, sections } = this.props
 
     if (typeof data === 'string') {
       const index = sections.findIndex(section => section === data)
@@ -52,6 +57,12 @@ class Results extends Component {
         },
         () => this.refs.tabs.setPage(index)
       )
+
+      segment.trackWithProperties('results_change_section', {
+        query,
+        section: data,
+        method: 'tap'
+      })
     } else {
       const { position } = data
 
@@ -63,6 +74,12 @@ class Results extends Component {
 
       this.refs.sections.scrollToIndex({
         index: position
+      })
+
+      segment.trackWithProperties('results_change_section', {
+        query,
+        section: active,
+        method: 'swipe'
       })
     }
   }

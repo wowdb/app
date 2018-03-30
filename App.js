@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import App from './app/index'
 import store from './app/store'
 
-import { sentry } from './app/lib'
+import { segment, sentry } from './app/lib'
 
 export default class Bigglesworth extends Component {
   render() {

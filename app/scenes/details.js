@@ -7,6 +7,7 @@ import { capitalize, sortBy } from 'lodash'
 import { getComments } from '../actions'
 import { sort_up, sort_down } from '../assets'
 import { Main, NavBar, Separator, Spinner, Touchable } from '../components'
+import { segment } from '../lib'
 import { Colors, Fonts, Layout } from '../styles'
 
 class Details extends Component {
@@ -46,35 +47,71 @@ class Details extends Component {
     }
 
     getComments(id || itemId || creatureId || spellId, actualType)
+
+    this.setState({
+      id: id || itemId || creatureId || spellId,
+      type: actualType
+    })
+
+    segment.screenWithProperties('details', {
+      id: id || itemId || creatureId || spellId,
+      type: actualType
+    })
   }
 
   toggleReverse = () => {
-    const { reverse } = this.state
+    const { id, type, sort, reverse } = this.state
+
+    const nextReverse = !reverse
 
     this.setState({
-      reverse: !reverse
+      reverse: nextReverse
+    })
+
+    segment.trackWithProperties('details_toggle_sort', {
+      id,
+      type,
+      field: sort,
+      direction: nextReverse ? 'asc' : 'desc'
     })
   }
 
   toggleSort = () => {
-    const { sort } = this.state
+    const { id, type, sort, reverse } = this.state
+
+    const nextSort = sort === 'date' ? 'rating' : 'date'
 
     this.setState({
-      sort: sort === 'date' ? 'rating' : 'date'
+      sort: nextSort
+    })
+
+    segment.trackWithProperties('details_toggle_sort', {
+      id,
+      type,
+      field: nextSort,
+      direction: reverse ? 'asc' : 'desc'
     })
   }
 
-  toggleReplies = id => {
-    this.setState(state => {
-      const { visible } = state
+  toggleReplies = commentId => {
+    const { id, type } = this.props
+    const { visible } = this.state
 
-      const current = visible.get(id)
+    const current = visible.get(commentId)
 
-      visible.set(id, !current)
+    const nextCurrent = !current
 
-      return {
-        visible
-      }
+    visible.set(commentId, nextCurrent)
+
+    this.setState({
+      visible
+    })
+
+    segment.trackWithProperties('details_toggle_replies', {
+      id,
+      type,
+      commentId,
+      show: nextCurrent
     })
   }
 

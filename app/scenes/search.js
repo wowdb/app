@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 
 import { bigglesworth } from '../assets'
 import { Button, Main, TextBox } from '../components'
+import { segment } from '../lib'
 import { Colors, Layout } from '../styles'
 
 class Search extends Component {
@@ -13,6 +14,10 @@ class Search extends Component {
 
   state = {
     query: ''
+  }
+
+  componentDidMount() {
+    segment.screen('search')
   }
 
   search = () => {
