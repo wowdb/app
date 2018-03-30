@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 import { bigglesworth } from '../assets'
 import { Button, Main, TextBox } from '../components'
-import { Layout } from '../styles'
+import { Colors, Layout } from '../styles'
 
 class Search extends Component {
   static navigationOptions = {
@@ -34,6 +34,10 @@ class Search extends Component {
       <Main>
         <Main style={styles.main}>
           <Image style={styles.bigglesworth} source={bigglesworth} />
+          <Text style={styles.about}>
+            Mr Bigglesworth helps you find World of Warcraft information on the
+            go
+          </Text>
         </Main>
         <View style={styles.search}>
           <TextBox
@@ -55,11 +59,17 @@ const styles = StyleSheet.create({
   main: {
     alignItems: 'center',
     justifyContent: 'center',
-    padding: Layout.margin
+    padding: Layout.margin * 2
   },
   bigglesworth: {
-    height: 100,
-    width: 75
+    height: 80,
+    width: 104
+  },
+  about: {
+    color: Colors.textDark,
+    lineHeight: 20,
+    marginTop: Layout.margin,
+    textAlign: 'center'
   },
   search: {
     padding: Layout.margin
