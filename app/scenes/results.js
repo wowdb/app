@@ -60,6 +60,10 @@ class Results extends Component {
       this.setState({
         active
       })
+
+      this.refs.sections.scrollToIndex({
+        index: position
+      })
     }
   }
 
@@ -125,6 +129,7 @@ class Results extends Component {
       <Main>
         <View>
           <FlatList
+            ref="sections"
             style={styles.sections}
             data={sections}
             extraData={active}
