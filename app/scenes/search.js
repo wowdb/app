@@ -44,8 +44,11 @@ class Search extends Component {
             style={styles.textbox}
             autoCapitalize="none"
             autoCorrect={false}
-            placeholder="Gul'dan"
+            clearButtonMode="while-editing"
             onChangeText={query => this.setState({ query })}
+            onSubmitEditing={this.search}
+            placeholder="Gul'dan"
+            returnKeyType="search"
             value={query}
           />
           <Button label="Search" onPress={this.search} />

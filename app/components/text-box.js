@@ -8,10 +8,13 @@ export default class TextBox extends Component {
     const {
       autoCapitalize,
       autoCorrect,
+      clearButtonMode,
+      onChangeText,
+      onSubmitEditing,
       placeholder,
+      returnKeyType,
       style,
-      value,
-      onChangeText
+      value
     } = this.props
 
     return (
@@ -20,9 +23,12 @@ export default class TextBox extends Component {
           style={styles.input}
           autoCapitalize={autoCapitalize}
           autoCorrect={autoCorrect}
+          clearButtonMode={clearButtonMode}
           onChangeText={onChangeText}
+          onSubmitEditing={onSubmitEditing}
           placeholder={placeholder}
           placeholderTextColor={Colors.textDark}
+          returnKeyType={returnKeyType}
           underlineColorAndroid="transparent"
           value={value}
         />
