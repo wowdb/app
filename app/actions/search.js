@@ -1,6 +1,6 @@
 import { SEARCH_PENDING, SEARCH_SUCCESS, SEARCH_FAILURE } from '../constants'
 
-import { api, dialog } from '../lib'
+import { api, dialog, sentry } from '../lib'
 
 export const searchPending = () => {
   return {
@@ -36,6 +36,8 @@ export default query => {
       const { message } = err
 
       dialog.alert(message)
+
+      sentry.captureException(err)
     }
   }
 }

@@ -4,7 +4,7 @@ import {
   GET_COMMENTS_FAILURE
 } from '../constants'
 
-import { api, dialog } from '../lib'
+import { api, dialog, sentry } from '../lib'
 
 export const getCommentsPending = () => {
   return {
@@ -42,6 +42,8 @@ export default (id, type) => {
       const { message } = err
 
       dialog.alert(message)
+
+      sentry.captureException(err)
     }
   }
 }
