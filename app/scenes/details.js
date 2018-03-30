@@ -66,6 +66,20 @@ class Details extends Component {
     })
   }
 
+  getCommentStyle(rating) {
+    const style = {
+      color: Colors.text
+    }
+
+    if (rating > 10) {
+      style.color = Colors.comments.green
+    } else if (rating < 0) {
+      style.color = Colors.comments.gray
+    }
+
+    return style
+  }
+
   renderHeader = () => {
     const { sort, reverse } = this.state
 
@@ -94,16 +108,14 @@ class Details extends Component {
   renderReply = item => {
     const { id, body, user, rating, date } = item
 
-    const color = {
-      color: rating > 10 ? Colors.comments.green : Colors.text
-    }
+    const color = this.getCommentStyle(rating)
 
     return (
       <View key={id} style={styles.reply}>
         <Separator style={styles.replySeparator} />
-        <Text style={styles.replyBody}>{body}</Text>
+        <Text style={[styles.replyBody, color]}>{body}</Text>
         <View style={styles.footer}>
-          <Text style={[styles.rating, color]}>{rating}</Text>
+          <Text style={styles.rating}>{rating}</Text>
           <Text style={styles.meta}>{user}</Text>
           <Text style={styles.meta}>{moment(date).fromNow()}</Text>
         </View>
@@ -118,15 +130,13 @@ class Details extends Component {
 
     const show = visible.get(id)
 
-    const color = {
-      color: rating > 10 ? Colors.comments.green : Colors.text
-    }
+    const color = this.getCommentStyle(rating)
 
     return (
       <View style={styles.comment}>
-        <Text style={styles.body}>{body}</Text>
+        <Text style={[styles.body, color]}>{body}</Text>
         <View style={styles.footer}>
-          <Text style={[styles.rating, color]}>{rating}</Text>
+          <Text style={styles.rating}>{rating}</Text>
           <Text style={styles.meta}>{user}</Text>
           <Text style={styles.meta}>{moment(date).fromNow()}</Text>
           {replies.length > 0 && (
@@ -210,7 +220,7 @@ const styles = StyleSheet.create({
     marginTop: Layout.margin
   },
   rating: {
-    color: Colors.text,
+    color: Colors.textDark,
     fontSize: 12
   },
   meta: {
