@@ -10,15 +10,31 @@ Expo.Segment.initialize({
 
 export default {
   track(event) {
+    if (__DEV__) {
+      return
+    }
+
     Expo.Segment.track(event)
   },
   trackWithProperties(event, properties) {
+    if (__DEV__) {
+      return
+    }
+
     Expo.Segment.trackWithProperties(event, properties)
   },
   screen(name) {
+    if (__DEV__) {
+      return
+    }
+
     Expo.Segment.screen(name)
   },
   screenWithProperties(name, properties) {
+    if (__DEV__) {
+      return
+    }
+
     Expo.Segment.screenWithProperties(name, properties)
   }
 }

@@ -6,6 +6,10 @@ Sentry.config(SENTRY_DSN).install()
 
 export default {
   captureException(err) {
+    if (__DEV__) {
+      return
+    }
+
     Sentry.captureException(err)
   }
 }
