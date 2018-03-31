@@ -20,6 +20,7 @@
     },
     "android": {
       "package": "com.designplox.wowhead",
+      "icon": "./artwork/icon-android.png",
       "versionCode": 1
     },
     "hooks": {
@@ -35,7 +36,7 @@
       ]
     },
     "assetBundlePatterns": [
-      "app/assets/*"
+      "./app/assets/*"
     ]
   }
 }
