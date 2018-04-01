@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Image, FlatList, StyleSheet, Text, View } from 'react-native'
+import { Image, FlatList, Linking, StyleSheet, Text, View } from 'react-native'
 import { connect } from 'react-redux'
 import moment from 'moment'
 import { capitalize, sortBy } from 'lodash'
@@ -129,12 +129,22 @@ class Details extends Component {
     return style
   }
 
+  openLink = () => {
+    const { item: { id }, type } = this.props
+
+    Linking.openURL(
+      `https://www.wowhead.com/${type.substr(0, type.length - 1)}=${id}`
+    )
+  }
+
   renderHeader = () => {
     const { sort, reverse } = this.state
 
     return (
       <View style={styles.header}>
-        <Text style={styles.subtitle}>Comments from Wowhead</Text>
+        <Touchable onPress={this.openLink}>
+          <Text style={styles.subtitle}>Comments from Wowhead</Text>
+        </Touchable>
         <View style={styles.sort}>
           <Touchable onPress={this.toggleSort}>
             <Text style={styles.sortLabel}>{capitalize(sort)}</Text>
