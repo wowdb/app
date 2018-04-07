@@ -14,9 +14,11 @@ class Help extends Component {
   })
 
   componentDidMount() {
-    const { getFaq } = this.props
+    const { data, getFaq } = this.props
 
-    getFaq()
+    if (data.length === 0) {
+      getFaq()
+    }
 
     segment.screen('help')
   }
