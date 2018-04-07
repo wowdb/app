@@ -1,5 +1,6 @@
 import Details from './details'
+import Help from './help'
 import Search from './search'
 import Results from './results'
 
-export { Details, Search, Results }
+export { Details, Help, Search, Results }

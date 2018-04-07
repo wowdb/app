@@ -4,7 +4,7 @@ export default {
 
   background: '#000',
 
-  border: 'rgba(255, 255, 255, 0.075)',
+  border: 'rgba(255, 255, 255, 0.125)',
   modal: 'rgba(0, 0, 0, 0.85)',
 
   text: '#fff',

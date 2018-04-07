@@ -9,12 +9,13 @@ import {
 import { StackNavigator } from 'react-navigation'
 import { connect } from 'react-redux'
 
-import { Search, Results, Details } from './scenes'
+import { Search, Help, Results, Details } from './scenes'
 import { Colors } from './styles'
 
 export const Navigator = StackNavigator(
   {
     search: Search,
+    help: Help,
     results: Results,
     details: Details
   },

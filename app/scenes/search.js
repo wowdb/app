@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { Image, Keyboard, StyleSheet, Text, View } from 'react-native'
 import { connect } from 'react-redux'
 
-import { bigglesworth } from '../assets'
-import { Button, Main, TextBox } from '../components'
+import { bigglesworth, help } from '../assets'
+import { Button, Main, TextBox, Touchable } from '../components'
 import { segment } from '../lib'
 import { Colors, Fonts, Layout } from '../styles'
 
@@ -18,6 +18,12 @@ class Search extends Component {
 
   componentDidMount() {
     segment.screen('search')
+  }
+
+  help = () => {
+    const { navigation: { navigate } } = this.props
+
+    navigate('help')
   }
 
   search = () => {
@@ -39,6 +45,9 @@ class Search extends Component {
 
     return (
       <Main style={styles.main}>
+        <Touchable style={styles.help} onPress={this.help}>
+          <Image style={styles.icon} source={help} />
+        </Touchable>
         <View style={styles.header}>
           <View style={styles.logo}>
             <Image style={styles.bigglesworth} source={bigglesworth} />
@@ -72,6 +81,15 @@ class Search extends Component {
 const styles = StyleSheet.create({
   main: {
     backgroundColor: Colors.primary
+  },
+  help: {
+    alignSelf: 'flex-end'
+  },
+  icon: {
+    height: 32,
+    margin: Layout.margin,
+    opacity: 0.25,
+    width: 32
   },
   header: {
     alignItems: 'center',
