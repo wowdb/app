@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {
   KeyboardAvoidingView,
+  Platform,
   SafeAreaView,
   StatusBar,
   StyleSheet,
@@ -28,6 +29,10 @@ export const Navigator = StackNavigator(
 
 export default class Bigglesworth extends Component {
   render() {
+    if (Platform.OS === 'android') {
+      return <Navigator />
+    }
+
     return (
       <SafeAreaView style={styles.main}>
         <StatusBar backgroundColor={Colors.primary} barStyle="light-content" />
