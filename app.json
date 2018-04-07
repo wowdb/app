@@ -41,7 +41,7 @@
       ]
     },
     "assetBundlePatterns": [
-      "./app/assets/*"
+      "**/*"
     ]
   }
 }
