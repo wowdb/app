@@ -17,7 +17,7 @@
     },
     "ios": {
       "bundleIdentifier": "com.designplox.wowhead",
-      "buildNumber": "1"
+      "buildNumber": "2"
     },
     "android": {
       "package": "com.designplox.wowhead",
