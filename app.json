@@ -28,7 +28,7 @@
         {
           "file": "sentry-expo/upload-sourcemaps",
           "config": {
-            "organization": "designplox",
+            "organization": "dp",
             "project": "bigglesworth",
             "authToken": "b9adb1724ea245d0b2065063ba6bc6eea8e76f81c10b4b14adb6921ccd620c15"
           }
