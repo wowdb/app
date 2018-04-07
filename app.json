@@ -24,6 +24,10 @@
       "icon": "./artwork/icon-android.png",
       "versionCode": 1
     },
+    "androidStatusBar": {
+      "backgroundColor": "#121e33",
+      "barStyle": "light-content"
+    },
     "hooks": {
       "postPublish": [
         {
