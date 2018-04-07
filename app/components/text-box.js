@@ -58,7 +58,7 @@ export default class TextBox extends Component {
 
 const styles = StyleSheet.create({
   main: {
-    backgroundColor: Colors.backgroundLight,
+    backgroundColor: Colors.background,
     borderRadius: Layout.borderRadius
   },
   focused: {

@@ -9,10 +9,11 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./artwork/icon.png",
+    "primaryColor": "#2b374c",
     "splash": {
       "image": "./artwork/splash.png",
       "resizeMode": "cover",
-      "backgroundColor": "#282b2b"
+      "backgroundColor": "#000"
     },
     "ios": {
       "bundleIdentifier": "com.designplox.wowhead",

@@ -247,7 +247,7 @@ class Details extends Component {
 const styles = StyleSheet.create({
   header: {
     alignItems: 'center',
-    backgroundColor: Colors.backgroundLight,
+    backgroundColor: Colors.primary,
     flexDirection: 'row',
     justifyContent: 'space-between'
   },

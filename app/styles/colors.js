@@ -1,16 +1,14 @@
 export default {
-  primary: '#282b2b',
-  primaryDark: '#131615',
-  accent: '#91d1d7',
+  primary: '#2b374c',
+  accent: '#f4bf2a',
 
-  background: '#131615',
-  backgroundLight: '#282b2b',
+  background: '#000',
 
   border: 'rgba(255, 255, 255, 0.075)',
   modal: 'rgba(0, 0, 0, 0.85)',
 
   text: '#fff',
-  textDark: '#666',
+  textDark: '#999',
 
   shadow: {
     elevation: 2,

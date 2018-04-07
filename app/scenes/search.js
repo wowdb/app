@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { bigglesworth } from '../assets'
 import { Button, Main, TextBox } from '../components'
 import { segment } from '../lib'
-import { Colors, Layout } from '../styles'
+import { Colors, Fonts, Layout } from '../styles'
 
 class Search extends Component {
   static navigationOptions = {
@@ -38,16 +38,19 @@ class Search extends Component {
     const { query } = this.state
 
     return (
-      <Main>
-        <Main style={styles.main}>
+      <Main style={styles.main}>
+        <View style={styles.header}>
           <View style={styles.logo}>
             <Image style={styles.bigglesworth} source={bigglesworth} />
           </View>
           <Text style={styles.about}>
-            Mr Bigglesworth helps you find World of Warcraft data on the go
+            <Text style={styles.name}>Mr Bigglesworth</Text>
+            <Text> helps you find </Text>
+            <Text style={styles.wow}>World of Warcraft</Text>
+            <Text> data on the go</Text>
           </Text>
-        </Main>
-        <View style={styles.search}>
+        </View>
+        <View style={styles.footer}>
           <TextBox
             style={styles.textbox}
             autoCapitalize="none"
@@ -68,7 +71,11 @@ class Search extends Component {
 
 const styles = StyleSheet.create({
   main: {
+    backgroundColor: Colors.primary
+  },
+  header: {
     alignItems: 'center',
+    flex: 1,
     justifyContent: 'center',
     paddingHorizontal: '20%'
   },
@@ -76,16 +83,23 @@ const styles = StyleSheet.create({
     ...Colors.shadow
   },
   bigglesworth: {
-    height: 265 / 2,
-    width: 235 / 2
+    height: 100,
+    width: 100
   },
   about: {
     color: Colors.textDark,
-    lineHeight: 20,
-    marginTop: Layout.margin,
+    fontSize: Fonts.size.subtitle,
+    marginTop: Layout.margin * 2,
     textAlign: 'center'
   },
-  search: {
+  name: {
+    color: Colors.accent,
+    lineHeight: Fonts.size.subtitle * 1.4
+  },
+  wow: {
+    color: Colors.text
+  },
+  footer: {
     padding: Layout.margin
   },
   textbox: {

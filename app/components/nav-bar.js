@@ -32,7 +32,7 @@ export default class NavBar extends Component {
 const styles = StyleSheet.create({
   main: {
     alignItems: 'flex-start',
-    backgroundColor: Colors.backgroundLight,
+    backgroundColor: Colors.primary,
     paddingTop: Platform.OS === 'android' ? Expo.Constants.statusBarHeight : 0
   },
   back: {
