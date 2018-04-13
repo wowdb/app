@@ -4,11 +4,9 @@ import {
   Platform,
   SafeAreaView,
   StatusBar,
-  StyleSheet,
-  View
+  StyleSheet
 } from 'react-native'
 import { StackNavigator } from 'react-navigation'
-import { connect } from 'react-redux'
 
 import { Search, Help, Results, Details } from './scenes'
 import { Colors } from './styles'
@@ -35,7 +33,7 @@ export default class Bigglesworth extends Component {
 
     return (
       <SafeAreaView style={styles.main}>
-        <StatusBar backgroundColor={Colors.primary} barStyle="light-content" />
+        <StatusBar barStyle="light-content" />
         <KeyboardAvoidingView style={styles.main} behavior="padding">
           <Navigator />
         </KeyboardAvoidingView>
@@ -46,7 +44,7 @@ export default class Bigglesworth extends Component {
 
 const styles = StyleSheet.create({
   main: {
-    backgroundColor: Colors.background,
+    backgroundColor: Colors.primary,
     flex: 1
   }
 })

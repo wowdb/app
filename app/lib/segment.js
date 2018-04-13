@@ -1,40 +1,28 @@
-import {
-  SEGMENT_ANDROID_WRITE_KEY,
-  SEGMENT_IOS_WRITE_KEY
-} from 'react-native-dotenv'
+import { SEGMENT_ANDROID_KEY, SEGMENT_IOS_KEY } from 'react-native-dotenv'
 
-Expo.Segment.initialize({
-  androidWriteKey: SEGMENT_ANDROID_WRITE_KEY,
-  iosWriteKey: SEGMENT_IOS_WRITE_KEY
+import { Platform } from 'react-native'
+import Segment from 'react-native-analytics-segment-io'
+
+const key = Platform.OS === 'android' ? SEGMENT_ANDROID_KEY : SEGMENT_IOS_KEY
+
+Segment.setup(key, {
+  debug: __DEV__,
+  trackApplicationLifecycleEvents: true
 })
 
 export default {
-  track(event) {
+  track(event, properties) {
     if (__DEV__) {
       return
     }
 
-    Expo.Segment.track(event)
+    Segment.track(event, properties)
   },
-  trackWithProperties(event, properties) {
+  screen(name, properties) {
     if (__DEV__) {
       return
     }
 
-    Expo.Segment.trackWithProperties(event, properties)
-  },
-  screen(name) {
-    if (__DEV__) {
-      return
-    }
-
-    Expo.Segment.screen(name)
-  },
-  screenWithProperties(name, properties) {
-    if (__DEV__) {
-      return
-    }
-
-    Expo.Segment.screenWithProperties(name, properties)
+    Segment.screen(name, properties)
   }
 }

@@ -1,47 +1,4 @@
 {
-  "expo": {
-    "name": "Bigglesworth",
-    "description": "Mr Bigglesworth helps you find World of Warcraft information on the go",
-    "slug": "bigglesworth",
-    "privacy": "public",
-    "sdkVersion": "26.0.0",
-    "platforms": ["ios", "android"],
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./artwork/icon.png",
-    "primaryColor": "#2b374c",
-    "splash": {
-      "image": "./artwork/splash.png",
-      "resizeMode": "cover",
-      "backgroundColor": "#000"
-    },
-    "ios": {
-      "bundleIdentifier": "com.designplox.wowhead",
-      "buildNumber": "2"
-    },
-    "android": {
-      "package": "com.designplox.wowhead",
-      "icon": "./artwork/icon-android.png",
-      "versionCode": 1
-    },
-    "androidStatusBar": {
-      "backgroundColor": "#121e33",
-      "barStyle": "light-content"
-    },
-    "hooks": {
-      "postPublish": [
-        {
-          "file": "sentry-expo/upload-sourcemaps",
-          "config": {
-            "organization": "dp",
-            "project": "bigglesworth",
-            "authToken": "b9adb1724ea245d0b2065063ba6bc6eea8e76f81c10b4b14adb6921ccd620c15"
-          }
-        }
-      ]
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ]
-  }
+  "name": "Bigglesworth",
+  "displayName": "Bigglesworth"
 }

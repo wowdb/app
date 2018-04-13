@@ -1,0 +1,69 @@
+apply plugin: 'com.android.application'
+
+import com.android.build.OutputFile
+
+project.ext.react = [
+        entryFile: 'index.js'
+]
+
+apply from: '../../node_modules/react-native/react.gradle'
+apply from: '../../node_modules/react-native-sentry/sentry.gradle'
+
+def enableSeparateBuildPerCPUArchitecture = false
+def enableProguardInReleaseBuilds = false
+
+android {
+    defaultConfig {
+        applicationId 'com.designplox.bigglesworth'
+        minSdkVersion 16
+        targetSdkVersion 27
+        versionCode 1
+        versionName '1.0'
+        ndk {
+            abiFilters 'armeabi-v7a', 'x86'
+        }
+    }
+    splits {
+        abi {
+            reset()
+            enable enableSeparateBuildPerCPUArchitecture
+            universalApk false
+            include 'armeabi-v7a', 'x86'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled enableProguardInReleaseBuilds
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            def versionCodes = ['armeabi-v7a': 1, 'x86': 2]
+            def abi = output.getFilter(OutputFile.ABI)
+
+            if (abi != null) {
+                output.versionCodeOverride = versionCodes.get(abi) * 1048576 + defaultConfig.versionCode
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation project(':react-native-analytics-segment-io')
+    implementation project(':react-native-sentry')
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'com.android.support:support-v4:27.1.1'
+    implementation 'com.android.support:support-media-compat:27.1.1'
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+
+    implementation 'com.facebook.react:react-native:+'
+}
+
+task copyDownloadableDepsToLibs(type: Copy) {
+    from configurations.compile
+    into 'libs'
+}

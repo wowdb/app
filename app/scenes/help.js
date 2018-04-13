@@ -81,7 +81,9 @@ const styles = StyleSheet.create({
 })
 
 const mapStateToProps = (state, props) => {
-  const { faq: { data, loading } } = state
+  const {
+    faq: { data, loading }
+  } = state
 
   return {
     data,

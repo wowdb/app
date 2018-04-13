@@ -26,7 +26,12 @@ import { Colors, Fonts, Layout } from '../styles'
 
 class Results extends Component {
   static navigationOptions = ({
-    navigation: { goBack, state: { params: { query } } }
+    navigation: {
+      goBack,
+      state: {
+        params: { query }
+      }
+    }
   }) => ({
     header: <NavBar title={query} subtitle="Search" goBack={goBack} />
   })
@@ -40,7 +45,7 @@ class Results extends Component {
 
     search(query)
 
-    segment.screenWithProperties('results', {
+    segment.screen('results', {
       query
     })
   }
@@ -58,7 +63,7 @@ class Results extends Component {
         () => this.refs.tabs.setPage(index)
       )
 
-      segment.trackWithProperties('results_change_section', {
+      segment.track('results_change_section', {
         query,
         section: data,
         method: 'tap'
@@ -76,7 +81,7 @@ class Results extends Component {
         index: position
       })
 
-      segment.trackWithProperties('results_change_section', {
+      segment.track('results_change_section', {
         query,
         section: active,
         method: 'swipe'
@@ -85,7 +90,9 @@ class Results extends Component {
   }
 
   navigate = (item, type) => {
-    const { navigation: { navigate } } = this.props
+    const {
+      navigation: { navigate }
+    } = this.props
 
     navigate('details', {
       item,
@@ -218,9 +225,17 @@ const styles = StyleSheet.create({
 })
 
 const mapStateToProps = (state, props) => {
-  const { navigation: { state: { params: { query } } } } = props
+  const {
+    navigation: {
+      state: {
+        params: { query }
+      }
+    }
+  } = props
 
-  const { results: { data, loading } } = state
+  const {
+    results: { data, loading }
+  } = state
 
   const sections = Object.keys(data)
 

@@ -21,7 +21,9 @@ class Search extends Component {
   }
 
   help = () => {
-    const { navigation: { navigate } } = this.props
+    const {
+      navigation: { navigate }
+    } = this.props
 
     navigate('help')
   }
@@ -30,7 +32,9 @@ class Search extends Component {
     const { query } = this.state
 
     if (query) {
-      const { navigation: { navigate } } = this.props
+      const {
+        navigation: { navigate }
+      } = this.props
 
       navigate('results', {
         query

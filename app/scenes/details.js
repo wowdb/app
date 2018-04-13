@@ -12,7 +12,15 @@ import { Colors, Fonts, Layout } from '../styles'
 
 class Details extends Component {
   static navigationOptions = ({
-    navigation: { goBack, state: { params: { item: { name, title }, type } } }
+    navigation: {
+      goBack,
+      state: {
+        params: {
+          item: { name, title },
+          type
+        }
+      }
+    }
   }) => ({
     header: (
       <NavBar
@@ -53,7 +61,7 @@ class Details extends Component {
       type: actualType
     })
 
-    segment.screenWithProperties('details', {
+    segment.screen('details', {
       id: id || itemId || creatureId || spellId,
       type: actualType
     })
@@ -68,7 +76,7 @@ class Details extends Component {
       reverse: nextReverse
     })
 
-    segment.trackWithProperties('details_toggle_sort', {
+    segment.track('details_toggle_sort', {
       id,
       type,
       field: sort,
@@ -85,7 +93,7 @@ class Details extends Component {
       sort: nextSort
     })
 
-    segment.trackWithProperties('details_toggle_sort', {
+    segment.track('details_toggle_sort', {
       id,
       type,
       field: nextSort,
@@ -107,7 +115,7 @@ class Details extends Component {
       visible
     })
 
-    segment.trackWithProperties('details_toggle_replies', {
+    segment.track('details_toggle_replies', {
       id,
       type,
       commentId,
@@ -130,7 +138,10 @@ class Details extends Component {
   }
 
   openLink = () => {
-    const { item: { id }, type } = this.props
+    const {
+      item: { id },
+      type
+    } = this.props
 
     Linking.openURL(
       `https://www.wowhead.com/${type.substr(0, type.length - 1)}=${id}`
@@ -247,7 +258,7 @@ class Details extends Component {
 const styles = StyleSheet.create({
   header: {
     alignItems: 'center',
-    backgroundColor: Colors.primary,
+    backgroundColor: Colors.backgroundLight,
     flexDirection: 'row',
     justifyContent: 'space-between'
   },
@@ -316,9 +327,17 @@ const styles = StyleSheet.create({
 })
 
 const mapStateToProps = (state, props) => {
-  const { navigation: { state: { params: { item, type } } } } = props
+  const {
+    navigation: {
+      state: {
+        params: { item, type }
+      }
+    }
+  } = props
 
-  const { comments: { data, loading } } = state
+  const {
+    comments: { data, loading }
+  } = state
 
   return {
     item,

@@ -1,0 +1,120 @@
+PODS:
+  - Analytics (3.6.9)
+  - boost-for-react-native (1.63.0)
+  - DoubleConversion (1.1.5)
+  - Folly (2016.09.26.00):
+    - boost-for-react-native
+    - DoubleConversion
+    - glog
+  - glog (0.3.4)
+  - KSCrash/Core (1.15.18):
+    - KSCrash/Reporting/Filters/Basic
+  - KSCrash/Recording (1.15.18):
+    - KSCrash/Recording/Tools (= 1.15.18)
+  - KSCrash/Recording/Tools (1.15.18)
+  - KSCrash/Reporting/Filters/Base (1.15.18):
+    - KSCrash/Recording
+  - KSCrash/Reporting/Filters/Basic (1.15.18):
+    - KSCrash/Recording
+    - KSCrash/Reporting/Filters/Base
+  - React (0.55.2):
+    - React/Core (= 0.55.2)
+  - React/Core (0.55.2):
+    - yoga (= 0.55.2.React)
+  - React/CxxBridge (0.55.2):
+    - Folly (= 2016.09.26.00)
+    - React/Core
+    - React/cxxreact
+  - React/cxxreact (0.55.2):
+    - boost-for-react-native (= 1.63.0)
+    - Folly (= 2016.09.26.00)
+    - React/jschelpers
+    - React/jsinspector
+  - React/DevSupport (0.55.2):
+    - React/Core
+    - React/RCTWebSocket
+  - React/fishhook (0.55.2)
+  - React/jschelpers (0.55.2):
+    - Folly (= 2016.09.26.00)
+    - React/PrivateDatabase
+  - React/jsinspector (0.55.2)
+  - React/PrivateDatabase (0.55.2)
+  - React/RCTAnimation (0.55.2):
+    - React/Core
+  - React/RCTBlob (0.55.2):
+    - React/Core
+  - React/RCTImage (0.55.2):
+    - React/Core
+    - React/RCTNetwork
+  - React/RCTNetwork (0.55.2):
+    - React/Core
+  - React/RCTText (0.55.2):
+    - React/Core
+  - React/RCTWebSocket (0.55.2):
+    - React/Core
+    - React/fishhook
+    - React/RCTBlob
+  - Sentry (3.12.3):
+    - Sentry/Core (= 3.12.3)
+    - Sentry/KSCrash (= 3.12.3)
+  - Sentry/Core (3.12.3)
+  - Sentry/KSCrash (3.12.3):
+    - KSCrash/Core (~> 1.15.12)
+  - SentryReactNative (0.35.3):
+    - React
+    - Sentry (~> 3.12.0)
+    - Sentry/KSCrash (~> 3.12.0)
+  - yoga (0.55.2.React)
+
+DEPENDENCIES:
+  - Analytics
+  - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
+  - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
+  - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
+  - React/Core (from `../node_modules/react-native`)
+  - React/CxxBridge (from `../node_modules/react-native`)
+  - React/DevSupport (from `../node_modules/react-native`)
+  - React/RCTAnimation (from `../node_modules/react-native`)
+  - React/RCTImage (from `../node_modules/react-native`)
+  - React/RCTNetwork (from `../node_modules/react-native`)
+  - React/RCTText (from `../node_modules/react-native`)
+  - React/RCTWebSocket (from `../node_modules/react-native`)
+  - SentryReactNative (from `../node_modules/react-native-sentry`)
+  - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Analytics
+    - boost-for-react-native
+    - KSCrash
+    - Sentry
+
+EXTERNAL SOURCES:
+  DoubleConversion:
+    :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
+  Folly:
+    :podspec: "../node_modules/react-native/third-party-podspecs/Folly.podspec"
+  glog:
+    :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
+  React:
+    :path: "../node_modules/react-native"
+  SentryReactNative:
+    :path: "../node_modules/react-native-sentry"
+  yoga:
+    :path: "../node_modules/react-native/ReactCommon/yoga"
+
+SPEC CHECKSUMS:
+  Analytics: 6541ce337e99d9f7a2240a8b3953940a7be5f998
+  boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
+  DoubleConversion: e22e0762848812a87afd67ffda3998d9ef29170c
+  Folly: 211775e49d8da0ca658aebc8eab89d642935755c
+  glog: 1de0bb937dccdc981596d3b5825ebfb765017ded
+  KSCrash: 5394936f41e5c1ef7b79cf79b30d53299b0c160e
+  React: 35618ff86985ccc5a8a17d3ca0dd76fd47e0c690
+  Sentry: 48f6e1f8ffab620fa3d243774e22604abb1d87a1
+  SentryReactNative: 0f49bf6520e660219aa8ad8f5fd9ffc291a15743
+  yoga: a23273df0088bf7f2bb7e5d7b00044ea57a2a54a
+
+PODFILE CHECKSUM: 32944b294275ae10e94be315539ddc3a2721bf73
+
+COCOAPODS: 1.5.0
