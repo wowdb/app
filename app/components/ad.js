@@ -11,6 +11,8 @@ const appId = Platform.select({
   ios: ADMOB_APP_ID_IOS
 })
 
+admob().initialize(appId)
+
 export default class Ad extends Component {
   render() {
     const {
