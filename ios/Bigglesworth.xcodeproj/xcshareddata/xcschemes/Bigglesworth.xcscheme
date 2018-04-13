@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0620"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "NO"
@@ -18,34 +18,6 @@
                BuildableName = "libReact.a"
                BlueprintName = "React"
                ReferencedContainer = "container:../node_modules/react-native/React/React.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3E3FE9DCFBA979F82BB8F3816D9BC996"
-               BuildableName = "libPods-Bigglesworth.a"
-               BlueprintName = "Pods-Bigglesworth"
-               ReferencedContainer = "container:Pods/Pods.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EE249F831F0BC5B200AC5C78"
-               BuildableName = "libRNAnalyticsSegmentIO.a"
-               BlueprintName = "RNAnalyticsSegmentIO"
-               ReferencedContainer = "container:../node_modules/react-native-analytics-segment-io/ios/RNAnalyticsSegmentIO.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry

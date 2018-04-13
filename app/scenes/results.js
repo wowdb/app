@@ -1,5 +1,10 @@
+import {
+  ADMOB_UNIT_ID_RESULT_ANDROID,
+  ADMOB_UNIT_ID_RESULT_IOS
+} from 'react-native-dotenv'
+
 import React, { Component } from 'react'
-import { FlatList, Image, StyleSheet, Text, View } from 'react-native'
+import { FlatList, Image, Platform, StyleSheet, Text, View } from 'react-native'
 import { IndicatorViewPager } from 'rn-viewpager'
 import { connect } from 'react-redux'
 import { capitalize } from 'lodash'
@@ -7,6 +12,7 @@ import { capitalize } from 'lodash'
 import { search } from '../actions'
 import {
   Achievement,
+  Ad,
   Button,
   Item,
   Main,
@@ -21,7 +27,7 @@ import {
   Touchable,
   Zone
 } from '../components'
-import { segment } from '../lib'
+import { analytics } from '../lib'
 import { Colors, Fonts, Layout } from '../styles'
 
 class Results extends Component {
@@ -45,9 +51,7 @@ class Results extends Component {
 
     search(query)
 
-    segment.screen('results', {
-      query
-    })
+    analytics.screen('results')
   }
 
   setActive = data => {
@@ -63,7 +67,7 @@ class Results extends Component {
         () => this.refs.tabs.setPage(index)
       )
 
-      segment.track('results_change_section', {
+      analytics.track('results_change_section', {
         query,
         section: data,
         method: 'tap'
@@ -81,7 +85,7 @@ class Results extends Component {
         index: position
       })
 
-      segment.track('results_change_section', {
+      analytics.track('results_change_section', {
         query,
         section: active,
         method: 'swipe'
@@ -118,7 +122,7 @@ class Results extends Component {
     return <Text style={styles.empty}>Nothing found</Text>
   }
 
-  renderItem = (section, item) => {
+  getItem(section, item) {
     switch (section) {
       case 'achievements':
         return (
@@ -143,6 +147,20 @@ class Results extends Component {
       case 'zones':
         return <Zone {...item} onPress={() => this.navigate(item, section)} />
     }
+  }
+
+  renderItem = (section, item, index) => {
+    const unitId = Platform.select({
+      android: ADMOB_UNIT_ID_RESULT_ANDROID,
+      ios: ADMOB_UNIT_ID_RESULT_IOS
+    })
+
+    return (
+      <View>
+        {++index % 10 === 0 && <Ad id={unitId} />}
+        {this.getItem(section, item)}
+      </View>
+    )
   }
 
   render() {
@@ -183,7 +201,9 @@ class Results extends Component {
                         item.creatureId}`
                     }
                     ListEmptyComponent={this.renderEmpty}
-                    renderItem={({ item }) => this.renderItem(section, item)}
+                    renderItem={({ index, item }) =>
+                      this.renderItem(section, item, index)
+                    }
                   />
                 </View>
               ))}

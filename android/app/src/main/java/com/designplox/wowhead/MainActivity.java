@@ -1,4 +1,4 @@
-package com.designplox.bigglesworth;
+package com.designplox.wowhead;
 
 import com.facebook.react.ReactActivity;
 

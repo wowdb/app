@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 import { bigglesworth, help } from '../assets'
 import { Button, Main, TextBox, Touchable } from '../components'
-import { segment } from '../lib'
+import { analytics } from '../lib'
 import { Colors, Fonts, Layout } from '../styles'
 
 class Search extends Component {
@@ -17,7 +17,7 @@ class Search extends Component {
   }
 
   componentDidMount() {
-    segment.screen('search')
+    analytics.screen('search')
   }
 
   help = () => {
@@ -32,6 +32,8 @@ class Search extends Component {
     const { query } = this.state
 
     if (query) {
+      Keyboard.dismiss()
+
       const {
         navigation: { navigate }
       } = this.props
@@ -40,7 +42,9 @@ class Search extends Component {
         query
       })
 
-      Keyboard.dismiss()
+      analytics.track('search', {
+        query
+      })
     }
   }
 

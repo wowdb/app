@@ -19,7 +19,8 @@ target 'Bigglesworth' do
   pod 'glog', podspec: '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', podspec: '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  pod 'Analytics'
+  pod 'Firebase/Core'
+  pod 'Firebase/AdMob'
 
   post_install do |installer|
     installer.pods_project.targets.each do |target|

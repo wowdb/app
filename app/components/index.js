@@ -1,4 +1,5 @@
 import Achievement from './achievement'
+import Ad from './ad'
 import Button from './button'
 import Item from './item'
 import Main from './main'
@@ -15,6 +16,7 @@ import Zone from './zone'
 
 export {
   Achievement,
+  Ad,
   Button,
   Item,
   Main,

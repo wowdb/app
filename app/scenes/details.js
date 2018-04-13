@@ -1,13 +1,26 @@
+import {
+  ADMOB_UNIT_ID_COMMENT_ANDROID,
+  ADMOB_UNIT_ID_COMMENT_IOS
+} from 'react-native-dotenv'
+
 import React, { Component } from 'react'
-import { Image, FlatList, Linking, StyleSheet, Text, View } from 'react-native'
+import {
+  Image,
+  FlatList,
+  Linking,
+  Platform,
+  StyleSheet,
+  Text,
+  View
+} from 'react-native'
 import { connect } from 'react-redux'
 import moment from 'moment'
 import { capitalize, sortBy } from 'lodash'
 
 import { getComments } from '../actions'
 import { sort_up, sort_down } from '../assets'
-import { Main, NavBar, Separator, Spinner, Touchable } from '../components'
-import { segment } from '../lib'
+import { Ad, Main, NavBar, Separator, Spinner, Touchable } from '../components'
+import { analytics } from '../lib'
 import { Colors, Fonts, Layout } from '../styles'
 
 class Details extends Component {
@@ -61,7 +74,7 @@ class Details extends Component {
       type: actualType
     })
 
-    segment.screen('details', {
+    analytics.screen('details', {
       id: id || itemId || creatureId || spellId,
       type: actualType
     })
@@ -76,7 +89,7 @@ class Details extends Component {
       reverse: nextReverse
     })
 
-    segment.track('details_toggle_sort', {
+    analytics.track('details_toggle_sort', {
       id,
       type,
       field: sort,
@@ -93,7 +106,7 @@ class Details extends Component {
       sort: nextSort
     })
 
-    segment.track('details_toggle_sort', {
+    analytics.track('details_toggle_sort', {
       id,
       type,
       field: nextSort,
@@ -115,7 +128,7 @@ class Details extends Component {
       visible
     })
 
-    segment.track('details_toggle_replies', {
+    analytics.track('details_toggle_replies', {
       id,
       type,
       commentId,
@@ -143,9 +156,16 @@ class Details extends Component {
       type
     } = this.props
 
-    Linking.openURL(
-      `https://www.wowhead.com/${type.substr(0, type.length - 1)}=${id}`
-    )
+    const url = `https://www.wowhead.com/${type.substr(
+      0,
+      type.length - 1
+    )}=${id}`
+
+    Linking.openURL(url)
+
+    analytics.track('wowhead_link_opened', {
+      url
+    })
   }
 
   renderHeader = () => {
@@ -193,7 +213,7 @@ class Details extends Component {
     )
   }
 
-  renderItem = item => {
+  renderItem = (item, index) => {
     const { visible } = this.state
 
     const { id, body, user, rating, date, replies } = item
@@ -202,25 +222,35 @@ class Details extends Component {
 
     const color = this.getCommentStyle(rating)
 
+    const unitId = Platform.select({
+      android: ADMOB_UNIT_ID_COMMENT_ANDROID,
+      ios: ADMOB_UNIT_ID_COMMENT_IOS
+    })
+
     return (
-      <View style={styles.comment}>
-        <Text style={[styles.body, color]}>{body}</Text>
-        <View style={styles.footer}>
-          <Text style={styles.rating}>{rating}</Text>
-          <Text style={styles.meta}>{user}</Text>
-          <Text style={styles.meta}>{moment(date).fromNow()}</Text>
-          {replies.length > 0 && (
-            <Touchable
-              style={styles.toggleReplies}
-              onPress={() => this.toggleReplies(id)}
-            >
-              <Text style={styles.meta}>{show ? 'Hide' : 'Show'} replies</Text>
-            </Touchable>
+      <View>
+        {++index % 5 === 0 && <Ad id={unitId} />}
+        <View style={styles.comment}>
+          <Text style={[styles.body, color]}>{body}</Text>
+          <View style={styles.footer}>
+            <Text style={styles.rating}>{rating}</Text>
+            <Text style={styles.meta}>{user}</Text>
+            <Text style={styles.meta}>{moment(date).fromNow()}</Text>
+            {replies.length > 0 && (
+              <Touchable
+                style={styles.toggleReplies}
+                onPress={() => this.toggleReplies(id)}
+              >
+                <Text style={styles.meta}>
+                  {show ? 'Hide' : 'Show'} replies
+                </Text>
+              </Touchable>
+            )}
+          </View>
+          {show && (
+            <View style={styles.replies}>{replies.map(this.renderReply)}</View>
           )}
         </View>
-        {show && (
-          <View style={styles.replies}>{replies.map(this.renderReply)}</View>
-        )}
       </View>
     )
   }
@@ -247,7 +277,7 @@ class Details extends Component {
             ListEmptyComponent={this.renderEmpty}
             ListHeaderComponent={this.renderHeader}
             refreshing={loading}
-            renderItem={({ item }) => this.renderItem(item)}
+            renderItem={({ index, item }) => this.renderItem(item, index)}
           />
         )}
       </Main>

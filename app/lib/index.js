@@ -1,6 +1,6 @@
+import analytics from './analytics'
 import api from './api'
 import dialog from './dialog'
-import segment from './segment'
 import sentry from './sentry'
 
-export { api, dialog, segment, sentry }
+export { analytics, api, dialog, sentry }

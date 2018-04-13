@@ -14,7 +14,7 @@ def enableProguardInReleaseBuilds = false
 
 android {
     defaultConfig {
-        applicationId 'com.designplox.bigglesworth'
+        applicationId 'com.designplox.wowhead'
         minSdkVersion 16
         targetSdkVersion 27
         versionCode 1
@@ -51,12 +51,19 @@ android {
 }
 
 dependencies {
-    implementation project(':react-native-analytics-segment-io')
+    implementation(project(':react-native-firebase')) {
+        transitive = false
+    }
     implementation project(':react-native-sentry')
+
+    implementation 'com.google.android.gms:play-services-base:15.0.0'
+    implementation 'com.google.firebase:firebase-core:15.0.0'
+    implementation 'com.google.firebase:firebase-ads:15.0.0'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation 'com.android.support:support-v4:27.1.1'
+    implementation 'com.android.support:customtabs:27.1.1'
     implementation 'com.android.support:support-media-compat:27.1.1'
     implementation 'com.android.support:appcompat-v7:27.1.1'
 
@@ -67,3 +74,5 @@ task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
 }
+
+apply plugin: 'com.google.gms.google-services'

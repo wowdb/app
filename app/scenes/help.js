@@ -5,7 +5,7 @@ import Hyperlink from 'react-native-hyperlink'
 
 import { getFaq } from '../actions'
 import { Main, NavBar, Spinner } from '../components'
-import { segment } from '../lib'
+import { analytics } from '../lib'
 import { Colors, Fonts, Layout } from '../styles'
 
 class Help extends Component {
@@ -20,7 +20,7 @@ class Help extends Component {
       getFaq()
     }
 
-    segment.screen('help')
+    analytics.screen('help')
   }
 
   renderItem = item => {
