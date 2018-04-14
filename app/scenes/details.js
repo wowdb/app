@@ -214,7 +214,7 @@ class Details extends Component {
   }
 
   renderItem = (item, index) => {
-    const { visible } = this.state
+    const { sort, reverse, visible } = this.state
 
     const { id, body, user, rating, date, replies } = item
 
@@ -226,6 +226,12 @@ class Details extends Component {
       android: ADMOB_UNIT_ID_COMMENT_ANDROID,
       ios: ADMOB_UNIT_ID_COMMENT_IOS
     })
+
+    let comments = sortBy(replies, sort)
+
+    if (reverse) {
+      comments = comments.reverse()
+    }
 
     return (
       <View>
@@ -248,7 +254,7 @@ class Details extends Component {
             )}
           </View>
           {show && (
-            <View style={styles.replies}>{replies.map(this.renderReply)}</View>
+            <View style={styles.replies}>{comments.map(this.renderReply)}</View>
           )}
         </View>
       </View>
