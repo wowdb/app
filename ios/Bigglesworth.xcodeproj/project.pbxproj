@@ -603,6 +603,7 @@
 				TargetAttributes = {
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = N77AF777MZ;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -1039,7 +1040,8 @@
 			baseConfigurationReference = 51C85E72D6FEB588D2813C02 /* Pods-Bigglesworth.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 1;
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 4;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = N77AF777MZ;
 				HEADER_SEARCH_PATHS = (
@@ -1056,6 +1058,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.designplox.wowhead;
 				PRODUCT_NAME = Bigglesworth;
+				PROVISIONING_PROFILE = "f3af12eb-ebde-4b35-a95c-380903faa3f1";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development com.designplox.wowhead";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1065,7 +1069,9 @@
 			baseConfigurationReference = 1F4C9202D890742F25A42C85 /* Pods-Bigglesworth.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 1;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = N77AF777MZ;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1081,6 +1087,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.designplox.wowhead;
 				PRODUCT_NAME = Bigglesworth;
+				PROVISIONING_PROFILE = "a5e570a6-6682-4d71-bb1b-20d7122e50fe";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.designplox.wowhead";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

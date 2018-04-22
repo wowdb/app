@@ -1,5 +1,5 @@
 {
-  "name": "Bigglesworth",
+  "name": "bigglesworth",
   "description": "Mr Bigglesworth helps you find World of Warcraft information on the go",
   "private": true,
   "license": "MIT",
@@ -14,20 +14,23 @@
   },
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "ios": "react-native run-ios --simulator 'iPhone 8'",
+    "fastlane:android": "cd android && bundle exec fastlane beta",
+    "fastlane:ios": "cd ios && bundle exec fastlane beta"
   },
   "dependencies": {
     "lodash.capitalize": "^4.2.1",
     "lodash.sortby": "^4.7.0",
-    "moment": "^2.22.0",
+    "moment": "^2.22.1",
     "react": "^16.3.1",
-    "react-native": "^0.55.2",
-    "react-native-firebase": "^4.0.3",
-    "react-native-hyperlink": "^0.0.12",
+    "react-native": "^0.55.3",
+    "react-native-firebase": "^4.0.5",
+    "react-native-hyperlink": "^0.0.13",
     "react-native-sentry": "^0.35.3",
     "react-navigation": "1.5.11",
     "react-redux": "^5.0.7",
-    "redux": "^3.7.2",
+    "redux": "^4.0.0",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
     "rn-viewpager": "^1.2.9"
@@ -35,7 +38,7 @@
   "devDependencies": {
     "husky": "^0.14.3",
     "lint-staged": "^7.0.4",
-    "prettier": "^1.12.0",
+    "prettier": "^1.12.1",
     "react-native-dotenv": "^0.1.1"
   },
   "lint-staged": {

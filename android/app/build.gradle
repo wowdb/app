@@ -12,6 +12,23 @@ apply from: '../../node_modules/react-native-sentry/sentry.gradle'
 def enableSeparateBuildPerCPUArchitecture = false
 def enableProguardInReleaseBuilds = false
 
+def getPassword(String currentUser, String keyChain) {
+    def stdout = new ByteArrayOutputStream()
+    def stderr = new ByteArrayOutputStream()
+
+    exec {
+        commandLine 'security', '-q', 'find-generic-password', '-a', currentUser, '-s', keyChain, '-w'
+        standardOutput = stdout
+        errorOutput = stderr
+        ignoreExitValue true
+    }
+
+    stdout.toString().trim()
+}
+
+def BIGGLESWORTH_PASSWORD_STORE = getPassword('bigglesworth', 'bigglesworth_password_store')
+def BIGGLESWORTH_PASSWORD_KEY = getPassword('bigglesworth', 'bigglesworth_password_key')
+
 android {
     defaultConfig {
         applicationId 'com.designplox.wowhead'
@@ -31,13 +48,23 @@ android {
             include 'armeabi-v7a', 'x86'
         }
     }
+    signingConfigs {
+        release {
+            if (project.hasProperty('BIGGLESWORTH_STORE_FILE')) {
+                storeFile file(BIGGLESWORTH_STORE_FILE)
+                storePassword BIGGLESWORTH_PASSWORD_STORE
+                keyAlias BIGGLESWORTH_KEY_ALIAS
+                keyPassword BIGGLESWORTH_PASSWORD_KEY
+            }
+        }
+    }
     buildTypes {
         release {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
-
     applicationVariants.all { variant ->
         variant.outputs.each { output ->
             def versionCodes = ['armeabi-v7a': 1, 'x86': 2]

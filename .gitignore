@@ -29,6 +29,7 @@ build/
 .gradle
 local.properties
 *.iml
+*.jks
 
 # node.js
 #
@@ -51,6 +52,8 @@ buck-out/
 */fastlane/report.xml
 */fastlane/Preview.html
 */fastlane/screenshots
+*/fastlane/README.md
+*.app.dSYM.zip
 
 # Bundle artifact
 *.jsbundle
@@ -72,3 +75,7 @@ Pods
 #
 GoogleService-Info.plist
 google-services.json
+
+# Google Play
+#
+google-play.json
