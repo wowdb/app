@@ -1,37 +1,24 @@
-platform :ios, '10.0'
+platform :ios, '9.0'
 
-target 'Bigglesworth' do
+target 'WoWdb' do
+  pod 'React', path: '../node_modules/react-native'
   pod 'yoga', path: '../node_modules/react-native/ReactCommon/yoga'
-  pod 'React', path: '../node_modules/react-native', subspecs: %w[
-    Core
-    CxxBridge
-    DevSupport
-    RCTAnimation
-    RCTImage
-    RCTNetwork
-    RCTText
-    RCTWebSocket
-  ]
-
-  pod 'SentryReactNative', path: '../node_modules/react-native-sentry'
 
   pod 'DoubleConversion', podspec: '../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec'
-  pod 'glog', podspec: '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', podspec: '../node_modules/react-native/third-party-podspecs/Folly.podspec'
+  pod 'glog', podspec: '../node_modules/react-native/third-party-podspecs/glog.podspec'
 
-  pod 'Firebase/Core'
-  pod 'Firebase/AdMob'
+  pod 'CodePush', path: '../node_modules/react-native-code-push'
+  pod 'RNAnalytics', path: '../node_modules/@segment/analytics-react-native'
+  pod 'RNAnalyticsIntegration-Google-Analytics', path: '../node_modules/@segment/analytics-react-native-google-analytics'
+  pod 'RNGestureHandler', path: '../node_modules/react-native-gesture-handler'
+  pod 'SentryReactNative', path: '../node_modules/react-native-sentry'
+end
 
-  post_install do |installer|
-    installer.pods_project.targets.each do |target|
-      target.remove_from_project if target.name == 'React'
+post_install do |installer|
+  targets_to_ignore = %w[React yoga]
 
-      next unless target.name == 'yoga'
-
-      target.build_configurations.each do |config|
-        config.build_settings['GCC_TREAT_WARNINGS_AS_ERRORS'] = 'NO'
-        config.build_settings['GCC_WARN_64_TO_32_BIT_CONVERSION'] = 'NO'
-      end
-    end
+  installer.pods_project.targets.each do |target|
+    target.remove_from_project if targets_to_ignore.include? target.name
   end
 end

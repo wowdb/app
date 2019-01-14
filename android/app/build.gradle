@@ -1,98 +1,39 @@
 apply plugin: 'com.android.application'
 
-import com.android.build.OutputFile
-
 project.ext.react = [
         entryFile: 'index.js'
 ]
 
 apply from: '../../node_modules/react-native/react.gradle'
+apply from: '../../node_modules/react-native-code-push/android/codepush.gradle'
 apply from: '../../node_modules/react-native-sentry/sentry.gradle'
 
-def enableSeparateBuildPerCPUArchitecture = false
-def enableProguardInReleaseBuilds = false
-
-def getPassword(String currentUser, String keyChain) {
-    def stdout = new ByteArrayOutputStream()
-    def stderr = new ByteArrayOutputStream()
-
-    exec {
-        commandLine 'security', '-q', 'find-generic-password', '-a', currentUser, '-s', keyChain, '-w'
-        standardOutput = stdout
-        errorOutput = stderr
-        ignoreExitValue true
-    }
-
-    stdout.toString().trim()
-}
-
-def BIGGLESWORTH_PASSWORD_STORE = getPassword('bigglesworth', 'bigglesworth_password_store')
-def BIGGLESWORTH_PASSWORD_KEY = getPassword('bigglesworth', 'bigglesworth_password_key')
-
 android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
     defaultConfig {
         applicationId 'com.designplox.wowhead'
-        minSdkVersion 16
-        targetSdkVersion 27
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName '1.0'
         ndk {
             abiFilters 'armeabi-v7a', 'x86'
         }
     }
-    splits {
-        abi {
-            reset()
-            enable enableSeparateBuildPerCPUArchitecture
-            universalApk false
-            include 'armeabi-v7a', 'x86'
-        }
-    }
-    signingConfigs {
-        release {
-            if (project.hasProperty('BIGGLESWORTH_STORE_FILE')) {
-                storeFile file(BIGGLESWORTH_STORE_FILE)
-                storePassword BIGGLESWORTH_PASSWORD_STORE
-                keyAlias BIGGLESWORTH_KEY_ALIAS
-                keyPassword BIGGLESWORTH_PASSWORD_KEY
-            }
-        }
-    }
-    buildTypes {
-        release {
-            minifyEnabled enableProguardInReleaseBuilds
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
-        }
-    }
-    applicationVariants.all { variant ->
-        variant.outputs.each { output ->
-            def versionCodes = ['armeabi-v7a': 1, 'x86': 2]
-            def abi = output.getFilter(OutputFile.ABI)
-
-            if (abi != null) {
-                output.versionCodeOverride = versionCodes.get(abi) * 1048576 + defaultConfig.versionCode
-            }
-        }
-    }
 }
 
 dependencies {
-    implementation(project(':react-native-firebase')) {
-        transitive = false
-    }
+    implementation project(':@segment_analytics-react-native-google-analytics')
+    implementation project(':@segment_analytics-react-native')
+    implementation project(':react-native-code-push')
+    implementation project(':react-native-gesture-handler')
     implementation project(':react-native-sentry')
-
-    implementation 'com.google.android.gms:play-services-base:15.0.0'
-    implementation 'com.google.firebase:firebase-core:15.0.0'
-    implementation 'com.google.firebase:firebase-ads:15.0.0'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'com.android.support:support-v4:27.1.1'
-    implementation 'com.android.support:customtabs:27.1.1'
-    implementation 'com.android.support:support-media-compat:27.1.1'
-    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
 
     implementation 'com.facebook.react:react-native:+'
 }
@@ -101,5 +42,3 @@ task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
 }
-
-apply plugin: 'com.google.gms.google-services'

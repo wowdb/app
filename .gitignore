@@ -21,6 +21,7 @@ DerivedData
 *.ipa
 *.xcuserstate
 project.xcworkspace
+Pods/
 
 # Android/IntelliJ
 #
@@ -29,7 +30,6 @@ build/
 .gradle
 local.properties
 *.iml
-*.jks
 
 # node.js
 #
@@ -52,30 +52,14 @@ buck-out/
 */fastlane/report.xml
 */fastlane/Preview.html
 */fastlane/screenshots
-*/fastlane/README.md
-*.app.dSYM.zip
 
 # Bundle artifact
 *.jsbundle
 
 # Environment variables
 #
-.env
-.env.production
+.env*
 
 # Sentry
 #
 sentry.properties
-
-# CocoaPods
-#
-Pods
-
-# Firebase
-#
-GoogleService-Info.plist
-google-services.json
-
-# Google Play
-#
-google-play.json

@@ -1,2 +1,0 @@
-json_key_file('google-play.json')
-package_name('com.designplox.wowhead')

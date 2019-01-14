@@ -1,125 +1,81 @@
 PODS:
+  - Analytics (3.6.10)
+  - Base64 (1.1.2)
   - boost-for-react-native (1.63.0)
-  - DoubleConversion (1.1.5)
-  - Firebase/AdMob (4.12.0):
-    - Firebase/Core
-    - Google-Mobile-Ads-SDK (= 7.30.0)
-  - Firebase/Core (4.12.0):
-    - FirebaseAnalytics (= 4.1.0)
-    - FirebaseCore (= 4.0.19)
-  - FirebaseAnalytics (4.1.0):
-    - FirebaseCore (~> 4.0)
-    - FirebaseInstanceID (~> 2.0)
-    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
-    - nanopb (~> 0.3)
-  - FirebaseCore (4.0.19):
-    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
-  - FirebaseInstanceID (2.0.10):
-    - FirebaseCore (~> 4.0)
-  - Folly (2016.09.26.00):
+  - CodePush (5.5.1):
+    - Base64 (~> 1.1)
+    - JWT (~> 3.0.0-beta.7)
+    - React
+    - SSZipArchive (~> 2.1)
+  - DoubleConversion (1.1.6)
+  - Folly (2016.10.31.00):
     - boost-for-react-native
     - DoubleConversion
     - glog
-  - glog (0.3.4)
-  - Google-Mobile-Ads-SDK (7.30.0)
-  - GoogleToolboxForMac/Defines (2.1.3)
-  - "GoogleToolboxForMac/NSData+zlib (2.1.3)":
-    - GoogleToolboxForMac/Defines (= 2.1.3)
-  - KSCrash/Core (1.15.18):
-    - KSCrash/Reporting/Filters/Basic
-  - KSCrash/Recording (1.15.18):
-    - KSCrash/Recording/Tools (= 1.15.18)
-  - KSCrash/Recording/Tools (1.15.18)
-  - KSCrash/Reporting/Filters/Base (1.15.18):
-    - KSCrash/Recording
-  - KSCrash/Reporting/Filters/Basic (1.15.18):
-    - KSCrash/Recording
-    - KSCrash/Reporting/Filters/Base
-  - nanopb (0.3.8):
-    - nanopb/decode (= 0.3.8)
-    - nanopb/encode (= 0.3.8)
-  - nanopb/decode (0.3.8)
-  - nanopb/encode (0.3.8)
-  - React (0.55.2):
-    - React/Core (= 0.55.2)
-  - React/Core (0.55.2):
-    - yoga (= 0.55.2.React)
-  - React/CxxBridge (0.55.2):
-    - Folly (= 2016.09.26.00)
-    - React/Core
-    - React/cxxreact
-  - React/cxxreact (0.55.2):
-    - boost-for-react-native (= 1.63.0)
-    - Folly (= 2016.09.26.00)
-    - React/jschelpers
-    - React/jsinspector
-  - React/DevSupport (0.55.2):
-    - React/Core
-    - React/RCTWebSocket
-  - React/fishhook (0.55.2)
-  - React/jschelpers (0.55.2):
-    - Folly (= 2016.09.26.00)
-    - React/PrivateDatabase
-  - React/jsinspector (0.55.2)
-  - React/PrivateDatabase (0.55.2)
-  - React/RCTAnimation (0.55.2):
-    - React/Core
-  - React/RCTBlob (0.55.2):
-    - React/Core
-  - React/RCTImage (0.55.2):
-    - React/Core
-    - React/RCTNetwork
-  - React/RCTNetwork (0.55.2):
-    - React/Core
-  - React/RCTText (0.55.2):
-    - React/Core
-  - React/RCTWebSocket (0.55.2):
-    - React/Core
-    - React/fishhook
-    - React/RCTBlob
-  - Sentry (3.12.3):
-    - Sentry/Core (= 3.12.3)
-    - Sentry/KSCrash (= 3.12.3)
-  - Sentry/Core (3.12.3)
-  - Sentry/KSCrash (3.12.3):
-    - KSCrash/Core (~> 1.15.12)
-  - SentryReactNative (0.35.3):
+  - glog (0.3.5)
+  - GoogleAnalytics (3.17.0)
+  - GoogleIDFASupport (3.14.0)
+  - JWT (3.0.0-beta.11):
+    - Base64 (~> 1.1.2)
+  - React (0.57.8):
+    - React/Core (= 0.57.8)
+  - React/Core (0.57.8):
+    - yoga (= 0.57.8.React)
+  - RNAnalytics (0.0.1-beta.3):
+    - Analytics
     - React
-    - Sentry (~> 3.12.0)
-    - Sentry/KSCrash (~> 3.12.0)
-  - yoga (0.55.2.React)
+  - RNAnalyticsIntegration-Google-Analytics (0.0.1-beta.3):
+    - Analytics
+    - React
+    - Segment-GoogleAnalytics
+  - RNGestureHandler (1.0.12):
+    - React
+  - Segment-GoogleAnalytics (1.2.0):
+    - Analytics (~> 3.0)
+    - Segment-GoogleAnalytics/GoogleIDFASupport (= 1.2.0)
+  - Segment-GoogleAnalytics/Core (1.2.0):
+    - Analytics (~> 3.0)
+    - GoogleAnalytics (~> 3.14)
+  - Segment-GoogleAnalytics/GoogleIDFASupport (1.2.0):
+    - Analytics (~> 3.0)
+    - GoogleIDFASupport (~> 3.14)
+    - Segment-GoogleAnalytics/Core
+  - Sentry (4.0.1):
+    - Sentry/Core (= 4.0.1)
+  - Sentry/Core (4.0.1)
+  - SentryReactNative (0.40.2):
+    - React
+    - Sentry (~> 4.0.1)
+  - SSZipArchive (2.1.4)
+  - yoga (0.57.8.React)
 
 DEPENDENCIES:
+  - CodePush (from `../node_modules/react-native-code-push`)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
-  - Firebase/AdMob
-  - Firebase/Core
   - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
-  - React/Core (from `../node_modules/react-native`)
-  - React/CxxBridge (from `../node_modules/react-native`)
-  - React/DevSupport (from `../node_modules/react-native`)
-  - React/RCTAnimation (from `../node_modules/react-native`)
-  - React/RCTImage (from `../node_modules/react-native`)
-  - React/RCTNetwork (from `../node_modules/react-native`)
-  - React/RCTText (from `../node_modules/react-native`)
-  - React/RCTWebSocket (from `../node_modules/react-native`)
+  - React (from `../node_modules/react-native`)
+  - "RNAnalytics (from `../node_modules/@segment/analytics-react-native`)"
+  - "RNAnalyticsIntegration-Google-Analytics (from `../node_modules/@segment/analytics-react-native-google-analytics`)"
+  - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - SentryReactNative (from `../node_modules/react-native-sentry`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
+    - Analytics
+    - Base64
     - boost-for-react-native
-    - Firebase
-    - FirebaseAnalytics
-    - FirebaseCore
-    - FirebaseInstanceID
-    - Google-Mobile-Ads-SDK
-    - GoogleToolboxForMac
-    - KSCrash
-    - nanopb
+    - GoogleAnalytics
+    - GoogleIDFASupport
+    - JWT
+    - Segment-GoogleAnalytics
     - Sentry
+    - SSZipArchive
 
 EXTERNAL SOURCES:
+  CodePush:
+    :path: "../node_modules/react-native-code-push"
   DoubleConversion:
     :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
   Folly:
@@ -128,29 +84,38 @@ EXTERNAL SOURCES:
     :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
   React:
     :path: "../node_modules/react-native"
+  RNAnalytics:
+    :path: "../node_modules/@segment/analytics-react-native"
+  RNAnalyticsIntegration-Google-Analytics:
+    :path: "../node_modules/@segment/analytics-react-native-google-analytics"
+  RNGestureHandler:
+    :path: "../node_modules/react-native-gesture-handler"
   SentryReactNative:
     :path: "../node_modules/react-native-sentry"
   yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
+  Analytics: 63744ad4afa65c3bcdcdb7a94b62515bde5b3900
+  Base64: cecfb41a004124895a7bcee567a89bae5a89d49b
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
-  DoubleConversion: e22e0762848812a87afd67ffda3998d9ef29170c
-  Firebase: d7fdf40e4d6c841849c52919f437fd3a0009ded0
-  FirebaseAnalytics: 3dfae28d4a5e06f86c4fae830efc2ad3fadb19bc
-  FirebaseCore: ff49ebb37e0f63a570d78c4f1c1c0befe8659d5c
-  FirebaseInstanceID: 8d20d890d65c917f9f7d9950b6e10a760ad34321
-  Folly: 211775e49d8da0ca658aebc8eab89d642935755c
-  glog: 1de0bb937dccdc981596d3b5825ebfb765017ded
-  Google-Mobile-Ads-SDK: 7404f68120ae8682afeb5af001fbf4aad731c78e
-  GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
-  KSCrash: 5394936f41e5c1ef7b79cf79b30d53299b0c160e
-  nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
-  React: 35618ff86985ccc5a8a17d3ca0dd76fd47e0c690
-  Sentry: 48f6e1f8ffab620fa3d243774e22604abb1d87a1
-  SentryReactNative: 0f49bf6520e660219aa8ad8f5fd9ffc291a15743
-  yoga: a23273df0088bf7f2bb7e5d7b00044ea57a2a54a
+  CodePush: cbb8e7f0de0cf68c1e25804d5c2c28b50ef896ea
+  DoubleConversion: bb338842f62ab1d708ceb63ec3d999f0f3d98ecd
+  Folly: c89ac2d5c6ab169cd7397ef27485c44f35f742c7
+  glog: e8acf0ebbf99759d3ff18c86c292a5898282dcde
+  GoogleAnalytics: f42cc53a87a51fe94334821868d9c8481ff47a7b
+  GoogleIDFASupport: aaf8c10bd429abb1c15349d5252244f5eda8ead1
+  JWT: 05028b9624591bba9681bb57df2c5f95fa258bad
+  React: adbac0757ce35e92fbd447ab98c810209d27d9b0
+  RNAnalytics: fbd2814daf6b87df79f3d46ef25a41e333632f66
+  RNAnalyticsIntegration-Google-Analytics: f49e69236ee373eb0541476711678726f15ad803
+  RNGestureHandler: 19864cb399138347461e7c9984ccf684cbf4db1d
+  Segment-GoogleAnalytics: b5070619ad337eb09c4b01c52c3d0d90495307cf
+  Sentry: a38f7879924c02239e121b19d993d23bdd1684db
+  SentryReactNative: 1f9c6453e581e30dca6d149f3c907b8fcbd626f2
+  SSZipArchive: 41455d4b8d2b6ab93990820b50dc697c2554a322
+  yoga: 74cdf036c30820443b25ade59916236b1e95ee93
 
-PODFILE CHECKSUM: 6fd34cac6bc3ffd4bda196e96aef8715f467aeec
+PODFILE CHECKSUM: cda1d42dd566c46bc46e789dd3c35615b8bf81ee
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.6.0.beta.2

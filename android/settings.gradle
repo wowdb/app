@@ -1,8 +1,15 @@
-rootProject.name = 'Bigglesworth'
+rootProject.name = 'WoWdb'
 
-include ':react-native-firebase'
-project(':react-native-firebase').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-firebase/android')
+include ':@segment_analytics-react-native-google-analytics'
+include ':@segment_analytics-react-native'
+include ':react-native-code-push'
+include ':react-native-gesture-handler'
 include ':react-native-sentry'
+
+project(':@segment_analytics-react-native-google-analytics').projectDir = new File(rootProject.projectDir, '../node_modules/@segment/analytics-react-native-google-analytics/android')
+project(':@segment_analytics-react-native').projectDir = new File(rootProject.projectDir, '../node_modules/@segment/analytics-react-native/android')
+project(':react-native-code-push').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-code-push/android/app')
+project(':react-native-gesture-handler').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-gesture-handler/android')
 project(':react-native-sentry').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-sentry/android')
 
 include ':app'
