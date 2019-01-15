@@ -81,7 +81,7 @@ class Results extends Component {
 
     const x = get(event, 'nativeEvent.contentOffset.x')
 
-    const index = get(sections, x / width)
+    const index = get(sections, Math.round(x / width))
 
     if (index) {
       this.setActive(index)

@@ -11,18 +11,8 @@ export default class Touchable extends Component {
     const { children, onPress, style } = this.props
 
     if (Platform.OS === 'android') {
-      const {
-        SelectableBackground,
-        SelectableBackgroundBorderless
-      } = TouchableNativeFeedback
-
-      const background =
-        Platform.Version > 21
-          ? SelectableBackgroundBorderless()
-          : SelectableBackground()
-
       return (
-        <TouchableNativeFeedback background={background} onPress={onPress}>
+        <TouchableNativeFeedback onPress={onPress}>
           <View style={style} pointerEvents="box-only">
             {children}
           </View>
