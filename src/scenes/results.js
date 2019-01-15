@@ -19,6 +19,7 @@ import {
   Text,
   Touchable
 } from '../components'
+import { analytics } from '../lib'
 import { Colors, Layout } from '../styles'
 
 class Results extends Component {
