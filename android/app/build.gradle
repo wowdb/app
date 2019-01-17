@@ -25,7 +25,6 @@ android {
 }
 
 dependencies {
-    implementation project(':@segment_analytics-react-native-google-analytics')
     implementation project(':@segment_analytics-react-native')
     implementation project(':react-native-code-push')
     implementation project(':react-native-gesture-handler')

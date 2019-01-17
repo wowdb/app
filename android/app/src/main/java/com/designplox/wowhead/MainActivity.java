@@ -1,4 +1,4 @@
-package app.wowdb;
+package com.designplox.wowhead;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;

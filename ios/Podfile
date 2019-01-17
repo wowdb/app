@@ -10,7 +10,6 @@ target 'WoWdb' do
 
   pod 'CodePush', path: '../node_modules/react-native-code-push'
   pod 'RNAnalytics', path: '../node_modules/@segment/analytics-react-native'
-  pod 'RNAnalyticsIntegration-Google-Analytics', path: '../node_modules/@segment/analytics-react-native-google-analytics'
   pod 'RNGestureHandler', path: '../node_modules/react-native-gesture-handler'
   pod 'SentryReactNative', path: '../node_modules/react-native-sentry'
 end

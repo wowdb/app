@@ -13,8 +13,6 @@ PODS:
     - DoubleConversion
     - glog
   - glog (0.3.5)
-  - GoogleAnalytics (3.17.0)
-  - GoogleIDFASupport (3.14.0)
   - JWT (3.0.0-beta.11):
     - Base64 (~> 1.1.2)
   - React (0.57.8):
@@ -24,22 +22,8 @@ PODS:
   - RNAnalytics (0.0.1-beta.3):
     - Analytics
     - React
-  - RNAnalyticsIntegration-Google-Analytics (0.0.1-beta.3):
-    - Analytics
-    - React
-    - Segment-GoogleAnalytics
   - RNGestureHandler (1.0.12):
     - React
-  - Segment-GoogleAnalytics (1.2.0):
-    - Analytics (~> 3.0)
-    - Segment-GoogleAnalytics/GoogleIDFASupport (= 1.2.0)
-  - Segment-GoogleAnalytics/Core (1.2.0):
-    - Analytics (~> 3.0)
-    - GoogleAnalytics (~> 3.14)
-  - Segment-GoogleAnalytics/GoogleIDFASupport (1.2.0):
-    - Analytics (~> 3.0)
-    - GoogleIDFASupport (~> 3.14)
-    - Segment-GoogleAnalytics/Core
   - Sentry (4.0.1):
     - Sentry/Core (= 4.0.1)
   - Sentry/Core (4.0.1)
@@ -56,7 +40,6 @@ DEPENDENCIES:
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - React (from `../node_modules/react-native`)
   - "RNAnalytics (from `../node_modules/@segment/analytics-react-native`)"
-  - "RNAnalyticsIntegration-Google-Analytics (from `../node_modules/@segment/analytics-react-native-google-analytics`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - SentryReactNative (from `../node_modules/react-native-sentry`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
@@ -66,10 +49,7 @@ SPEC REPOS:
     - Analytics
     - Base64
     - boost-for-react-native
-    - GoogleAnalytics
-    - GoogleIDFASupport
     - JWT
-    - Segment-GoogleAnalytics
     - Sentry
     - SSZipArchive
 
@@ -86,8 +66,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native"
   RNAnalytics:
     :path: "../node_modules/@segment/analytics-react-native"
-  RNAnalyticsIntegration-Google-Analytics:
-    :path: "../node_modules/@segment/analytics-react-native-google-analytics"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
   SentryReactNative:
@@ -103,19 +81,15 @@ SPEC CHECKSUMS:
   DoubleConversion: bb338842f62ab1d708ceb63ec3d999f0f3d98ecd
   Folly: c89ac2d5c6ab169cd7397ef27485c44f35f742c7
   glog: e8acf0ebbf99759d3ff18c86c292a5898282dcde
-  GoogleAnalytics: f42cc53a87a51fe94334821868d9c8481ff47a7b
-  GoogleIDFASupport: aaf8c10bd429abb1c15349d5252244f5eda8ead1
   JWT: 05028b9624591bba9681bb57df2c5f95fa258bad
   React: adbac0757ce35e92fbd447ab98c810209d27d9b0
   RNAnalytics: fbd2814daf6b87df79f3d46ef25a41e333632f66
-  RNAnalyticsIntegration-Google-Analytics: f49e69236ee373eb0541476711678726f15ad803
   RNGestureHandler: 19864cb399138347461e7c9984ccf684cbf4db1d
-  Segment-GoogleAnalytics: b5070619ad337eb09c4b01c52c3d0d90495307cf
   Sentry: a38f7879924c02239e121b19d993d23bdd1684db
   SentryReactNative: 1f9c6453e581e30dca6d149f3c907b8fcbd626f2
   SSZipArchive: 41455d4b8d2b6ab93990820b50dc697c2554a322
   yoga: 74cdf036c30820443b25ade59916236b1e95ee93
 
-PODFILE CHECKSUM: cda1d42dd566c46bc46e789dd3c35615b8bf81ee
+PODFILE CHECKSUM: ad447a0da6871b5be7f7350fac77625e152b3ed7
 
 COCOAPODS: 1.6.0.beta.2
