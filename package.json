@@ -6,11 +6,11 @@
   "author": {
     "name": "Ali Zahid",
     "email": "ali.zahid@live.com",
-    "url": "https://designplox.com/"
+    "url": "https://designplox.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/alizahid/bigglesworth"
+    "url": "https://github.com/wowdb/app"
   },
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start"
