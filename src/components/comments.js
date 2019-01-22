@@ -5,7 +5,7 @@ import moment from 'moment'
 import HTMLView from 'react-native-htmlview'
 
 import { sort_up, sort_down } from '../assets'
-import { Colors, Layout } from '../styles'
+import { Colors, Fonts, Layout } from '../styles'
 
 import Separator from './separator'
 import Text from './text'
@@ -60,7 +60,9 @@ export default class Comments extends Component {
         color: Colors.accent
       },
       div: {
-        color
+        color,
+        fontSize: Fonts.size.regular,
+        lineHeight: Fonts.lineHeight.regular
       }
     })
   }
