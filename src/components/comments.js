@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { FlatList, Image, StyleSheet, View } from 'react-native'
 import { capitalize, sortBy } from 'lodash'
 import moment from 'moment'
+import HTMLView from 'react-native-htmlview'
 
 import { sort_up, sort_down } from '../assets'
 import { Colors, Layout } from '../styles'
@@ -45,16 +46,23 @@ export default class Comments extends Component {
     })
   }
 
-  getCommentStyle(rating) {
-    const style = {}
+  getStyles(rating) {
+    let color = Colors.text
 
     if (rating > 10) {
-      style.color = Colors.comments.green
+      color = Colors.comments.green
     } else if (rating < 0) {
-      style.color = Colors.comments.gray
+      color = Colors.comments.gray
     }
 
-    return style
+    return StyleSheet.create({
+      a: {
+        color: Colors.accent
+      },
+      div: {
+        color
+      }
+    })
   }
 
   renderHeader = () => {
@@ -91,14 +99,13 @@ export default class Comments extends Component {
   renderReply = item => {
     const { body, date, id, rating, user } = item
 
-    const color = this.getCommentStyle(rating)
-
     return (
       <View key={id} style={styles.reply}>
         <Separator style={styles.replySeparator} />
-        <Text style={color} small>
-          {body}
-        </Text>
+        <HTMLView
+          stylesheet={this.getStyles(rating)}
+          value={`<div>${body}</div>`}
+        />
         <View style={styles.footer}>
           <Text style={styles.rating} small>
             {rating}
@@ -121,8 +128,6 @@ export default class Comments extends Component {
 
     const show = expanded.get(id)
 
-    const color = this.getCommentStyle(rating)
-
     let comments = sortBy(replies, sort)
 
     if (reverse) {
@@ -132,7 +137,10 @@ export default class Comments extends Component {
     return (
       <View>
         <View style={styles.comment}>
-          <Text style={color}>{body}</Text>
+          <HTMLView
+            stylesheet={this.getStyles(rating)}
+            value={`<div>${body}</div>`}
+          />
           <View style={styles.footer}>
             <Text style={styles.rating} small>
               {rating}
