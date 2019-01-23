@@ -50,6 +50,10 @@ class WoWdb extends Component {
   }
 
   render() {
+    if (Platform.OS === 'android') {
+      return <Container />
+    }
+
     return (
       <KeyboardAvoidingView style={styles.main} behavior="padding">
         <Container />
