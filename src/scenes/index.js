@@ -1,25 +1,11 @@
-import Achievement from './achievement'
-import Boss from './boss'
-import Help from './help'
-import Home from './home'
-import Item from './item'
-import Mount from './mount'
-import Pet from './pet'
-import Quest from './quest'
-import Results from './results'
-import Spell from './spell'
-import Zone from './zone'
-
-export {
-  Achievement,
-  Boss,
-  Help,
-  Home,
-  Item,
-  Mount,
-  Pet,
-  Quest,
-  Results,
-  Spell,
-  Zone
-}
+export { default as Achievement } from './achievement'
+export { default as Boss } from './boss'
+export { default as Help } from './help'
+export { default as Home } from './home'
+export { default as Item } from './item'
+export { default as Mount } from './mount'
+export { default as Pet } from './pet'
+export { default as Quest } from './quest'
+export { default as Results } from './results'
+export { default as Spell } from './spell'
+export { default as Zone } from './zone'

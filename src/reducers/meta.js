@@ -1,9 +1,8 @@
 import {
+  GET_META_FAILURE,
   GET_META_PENDING,
-  GET_META_SUCCESS,
-  GET_META_FAILURE
+  GET_META_SUCCESS
 } from '../actions/get-meta'
-
 import Data from '../data'
 
 const initial = {

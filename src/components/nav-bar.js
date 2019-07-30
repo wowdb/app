@@ -2,9 +2,8 @@ import React, { Component } from 'react'
 import { Image, SafeAreaView, StyleSheet } from 'react-native'
 import { NavigationActions, withNavigation } from 'react-navigation'
 
-import { left, help as helpIcon } from '../assets'
+import { help as helpIcon, left } from '../assets'
 import { Colors, Layout } from '../styles'
-
 import Text from './text'
 import Touchable from './touchable'
 

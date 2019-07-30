@@ -1,7 +1,7 @@
+import { get } from 'lodash'
 import React, { Component } from 'react'
 import { SafeAreaView, StyleSheet, View } from 'react-native'
 import { connect } from 'react-redux'
-import { get } from 'lodash'
 
 import { getObject } from '../actions'
 import {

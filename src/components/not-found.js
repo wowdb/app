@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import { Image, StyleSheet, View } from 'react-native'
 
 import { nothing_found } from '../assets'
-import { Colors, Fonts, Layout } from '../styles'
-
+import { Layout } from '../styles'
 import Text from './text'
 
 export default class NotFound extends Component {

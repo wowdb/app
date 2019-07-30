@@ -2,29 +2,17 @@ package com.designplox.wowhead;
 
 import android.app.Application;
 
+import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
-import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
-import com.microsoft.codepush.react.CodePush;
-import com.segment.analytics.reactnative.core.RNAnalyticsPackage;
-import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 
-import java.util.Arrays;
 import java.util.List;
-
-import io.sentry.RNSentryPackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
     private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
-
-        @Override
-        protected String getJSBundleFile() {
-            return CodePush.getJSBundleFile();
-        }
-
         @Override
         public boolean getUseDeveloperSupport() {
             return BuildConfig.DEBUG;
@@ -32,13 +20,10 @@ public class MainApplication extends Application implements ReactApplication {
 
         @Override
         protected List<ReactPackage> getPackages() {
-            return Arrays.asList(
-                    new MainReactPackage(),
-                    new CodePush(null, getApplicationContext(), BuildConfig.DEBUG),
-                    new RNGestureHandlerPackage(),
-                    new RNAnalyticsPackage(),
-                    new RNSentryPackage()
-            );
+            @SuppressWarnings("UnnecessaryLocalVariable")
+            List<ReactPackage> packages = new PackageList(this).getPackages();
+
+            return packages;
         }
 
         @Override

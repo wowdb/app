@@ -1,7 +1,7 @@
 import {
+  SEARCH_FAILURE,
   SEARCH_PENDING,
-  SEARCH_SUCCESS,
-  SEARCH_FAILURE
+  SEARCH_SUCCESS
 } from '../actions/search'
 
 const initial = {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { FlatList, SafeAreaView, StyleSheet, View } from 'react-native'
-import { connect } from 'react-redux'
 import Hyperlink from 'react-native-hyperlink'
+import { connect } from 'react-redux'
 
 import { NavBar, Text } from '../components'
 import { analytics } from '../lib'

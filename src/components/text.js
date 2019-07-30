@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text } from 'react-native'
 
-import { Fonts, Colors } from '../styles'
+import { Colors, Fonts } from '../styles'
 
 export default class TextView extends Component {
   render() {

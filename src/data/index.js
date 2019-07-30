@@ -1,4 +1,4 @@
-import { capitalize, get, startCase } from 'lodash'
+import { capitalize, get } from 'lodash'
 
 export default class Data {
   static set(data) {

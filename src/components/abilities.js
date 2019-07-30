@@ -1,12 +1,11 @@
+import { sortBy } from 'lodash'
 import React, { Component } from 'react'
 import { FlatList, StyleSheet, View } from 'react-native'
-import { sortBy } from 'lodash'
 
 import { Colors, Layout } from '../styles'
-
 import Icon from './icon'
-import Text from './text'
 import Separator from './separator'
+import Text from './text'
 
 export default class Abilities extends Component {
   renderHeader = () => {

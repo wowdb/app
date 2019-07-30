@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { ActivityIndicator, StyleSheet, View } from 'react-native'
 
 import { Colors, Fonts, Layout } from '../styles'
-
 import Text from './text'
 import Touchable from './touchable'
 

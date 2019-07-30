@@ -1,7 +1,7 @@
+import { get } from 'lodash'
 import React, { Component } from 'react'
 import { SafeAreaView, StyleSheet, View } from 'react-native'
 import { connect } from 'react-redux'
-import { get } from 'lodash'
 
 import { getObject } from '../actions'
 import {
@@ -14,9 +14,9 @@ import {
   Spinner,
   Text
 } from '../components'
+import Data from '../data'
 import { analytics } from '../lib'
 import { Colors, Layout } from '../styles'
-import Data from '../data'
 
 class Zone extends Component {
   static navigationOptions = ({ navigation }) => ({
@@ -86,22 +86,6 @@ class Zone extends Component {
     }
 
     return `${advisedMinLevel}-${advisedMaxLevel}`
-  }
-
-  get heroicLevel() {
-    const { data } = this.props
-
-    const { advisedHeroicMaxLevel, advisedHeroicMinLevel } = get(
-      data,
-      'zone',
-      {}
-    )
-
-    if (advisedHeroicMinLevel === advisedHeroicMaxLevel) {
-      return advisedHeroicMinLevel
-    }
-
-    return [advisedHeroicMinLevel, advisedHeroicMaxLevel].join('-')
   }
 
   get heroicLevel() {

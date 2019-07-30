@@ -1,33 +1,15 @@
-import Abilities from './abilities'
-import Bosses from './bosses'
-import Button from './button'
-import Comments from './comments'
-import Grid from './grid'
-import Icon from './icon'
-import Main from './main'
-import NavBar from './nav-bar'
-import NotFound from './not-found'
-import Result from './result'
-import Separator from './separator'
-import Spinner from './spinner'
-import Text from './text'
-import TextBox from './text-box'
-import Touchable from './touchable'
-
-export {
-  Abilities,
-  Bosses,
-  Button,
-  Comments,
-  Grid,
-  Icon,
-  Main,
-  NavBar,
-  NotFound,
-  Result,
-  Separator,
-  Spinner,
-  Text,
-  TextBox,
-  Touchable
-}
+export { default as Abilities } from './abilities'
+export { default as Bosses } from './bosses'
+export { default as Button } from './button'
+export { default as Comments } from './comments'
+export { default as Grid } from './grid'
+export { default as Icon } from './icon'
+export { default as Main } from './main'
+export { default as NavBar } from './nav-bar'
+export { default as NotFound } from './not-found'
+export { default as Result } from './result'
+export { default as Separator } from './separator'
+export { default as Spinner } from './spinner'
+export { default as Text } from './text'
+export { default as TextBox } from './text-box'
+export { default as Touchable } from './touchable'

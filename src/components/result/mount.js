@@ -3,7 +3,6 @@ import { StyleSheet } from 'react-native'
 import { withNavigation } from 'react-navigation'
 
 import { Colors, Layout } from '../../styles'
-
 import Icon from '../icon'
 import Text from '../text'
 import Touchable from '../touchable'
@@ -45,9 +44,6 @@ const styles = StyleSheet.create({
   name: {
     flex: 1,
     marginHorizontal: Layout.margin
-  },
-  level: {
-    color: Colors.textDark
   }
 })
 

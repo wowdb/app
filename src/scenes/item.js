@@ -1,7 +1,7 @@
+import { capitalize, countBy, get, sortBy, toPairs, uniq } from 'lodash'
 import React, { Component } from 'react'
 import { SafeAreaView, StyleSheet, View } from 'react-native'
 import { connect } from 'react-redux'
-import { capitalize, countBy, get, sortBy, toPairs, uniq } from 'lodash'
 
 import { getObject } from '../actions'
 import {
@@ -14,9 +14,9 @@ import {
   Spinner,
   Text
 } from '../components'
+import Data from '../data'
 import { analytics } from '../lib'
 import { Colors, Layout } from '../styles'
-import Data from '../data'
 
 class Item extends Component {
   static navigationOptions = ({ navigation }) => ({

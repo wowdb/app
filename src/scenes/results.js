@@ -1,3 +1,5 @@
+import { capitalize, get, groupBy } from 'lodash'
+import pluralize from 'pluralize'
 import React, { Component } from 'react'
 import {
   Dimensions,
@@ -7,8 +9,6 @@ import {
   View
 } from 'react-native'
 import { connect } from 'react-redux'
-import { capitalize, get, groupBy } from 'lodash'
-import pluralize from 'pluralize'
 
 import { search } from '../actions'
 import {
@@ -199,10 +199,6 @@ const styles = StyleSheet.create({
   },
   active: {
     color: Colors.accent
-  },
-  empty: {
-    color: Colors.textDark,
-    margin: Layout.margin
   },
   item: {
     width,

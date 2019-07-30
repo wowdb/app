@@ -1,5 +1,3 @@
-import analytics from './analytics'
-import api from './api'
-import dialog from './dialog'
-
-export { analytics, api, dialog }
+export { default as analytics } from './analytics'
+export { default as api } from './api'
+export { default as dialog } from './dialog'

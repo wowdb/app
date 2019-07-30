@@ -1,5 +1,3 @@
-import getMeta from './get-meta'
-import getObject from './get-object'
-import search from './search'
-
-export { getMeta, getObject, search }
+export { default as getMeta } from './get-meta'
+export { default as getObject } from './get-object'
+export { default as search } from './search'

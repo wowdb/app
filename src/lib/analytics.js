@@ -1,7 +1,6 @@
-import { SEGMENT_KEY_ANDROID, SEGMENT_KEY_IOS } from 'react-native-dotenv'
-
-import { Platform } from 'react-native'
 import analytics from '@segment/analytics-react-native'
+import { Platform } from 'react-native'
+import { SEGMENT_KEY_ANDROID, SEGMENT_KEY_IOS } from 'react-native-dotenv'
 
 class Analytics {
   constructor() {

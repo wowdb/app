@@ -1,7 +1,7 @@
+import { capitalize, get } from 'lodash'
 import React, { Component } from 'react'
 import { SafeAreaView, StyleSheet, View } from 'react-native'
 import { connect } from 'react-redux'
-import { capitalize, get } from 'lodash'
 
 import { getObject } from '../actions'
 import {
@@ -15,9 +15,9 @@ import {
   Spinner,
   Text
 } from '../components'
+import Data from '../data'
 import { analytics } from '../lib'
 import { Colors, Layout } from '../styles'
-import Data from '../data'
 
 class Pet extends Component {
   static navigationOptions = ({ navigation }) => ({
@@ -177,9 +177,6 @@ class Pet extends Component {
 const styles = StyleSheet.create({
   main: {
     backgroundColor: Colors.background
-  },
-  item: {
-    backgroundColor: Colors.primaryDark
   },
   content: {
     backgroundColor: Colors.primaryDark,

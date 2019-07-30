@@ -1,12 +1,11 @@
-import React, { Component } from 'react'
-import { FlatList, Image, StyleSheet, View } from 'react-native'
 import { capitalize, sortBy } from 'lodash'
 import moment from 'moment'
+import React, { Component } from 'react'
+import { FlatList, Image, StyleSheet, View } from 'react-native'
 import HTMLView from 'react-native-htmlview'
 
-import { sort_up, sort_down } from '../assets'
+import { sort_down, sort_up } from '../assets'
 import { Colors, Fonts, Layout } from '../styles'
-
 import Separator from './separator'
 import Text from './text'
 import Touchable from './touchable'
@@ -250,10 +249,6 @@ const styles = StyleSheet.create({
   },
   replySeparator: {
     marginBottom: Layout.margin
-  },
-  loading: {
-    alignItems: 'center',
-    justifyContent: 'center'
   },
   empty: {
     margin: Layout.margin,

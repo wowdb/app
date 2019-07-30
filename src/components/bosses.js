@@ -3,10 +3,9 @@ import { FlatList, StyleSheet, View } from 'react-native'
 import { withNavigation } from 'react-navigation'
 
 import { Colors, Layout } from '../styles'
-
+import Separator from './separator'
 import Text from './text'
 import Touchable from './touchable'
-import Separator from './separator'
 
 class Bosses extends Component {
   details = id => {

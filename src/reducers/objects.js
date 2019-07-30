@@ -1,7 +1,7 @@
 import {
+  GET_OBJECT_FAILURE,
   GET_OBJECT_PENDING,
-  GET_OBJECT_SUCCESS,
-  GET_OBJECT_FAILURE
+  GET_OBJECT_SUCCESS
 } from '../actions/get-object'
 
 const initial = {
