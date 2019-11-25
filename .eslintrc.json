@@ -1,14 +1,44 @@
 {
-  "extends": ["@react-native-community", "eslint:recommended", "prettier"],
-  "plugins": ["react", "react-native", "prettier"],
-  "root": true,
+  "extends": [
+    "@react-native-community",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier/@typescript-eslint"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint",
+    "react",
+    "react-native",
+    "sort-keys-fix",
+    "simple-import-sort",
+    "prettier"
+  ],
   "rules": {
+    "@typescript-eslint/camelcase": [
+      "error",
+      {
+        "allow": ["img_*", "formatted_address"]
+      }
+    ],
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-member-accessibility": "off",
+    "@typescript-eslint/no-use-before-define": [
+      "error",
+      {
+        "variables": false
+      }
+    ],
+    "comma-dangle": "off",
     "no-shadow": "off",
-    "prettier/prettier": "off",
+    "prettier/prettier": "error",
     "react-native/no-color-literals": "error",
     "react-native/no-inline-styles": "error",
     "react-native/no-raw-text": "error",
     "react-native/no-unused-styles": "error",
-    "react-native/split-platform-components": "error"
+    "react-native/split-platform-components": "error",
+    "semi": "off",
+    "simple-import-sort/sort": "error",
+    "sort-keys-fix/sort-keys-fix": "error"
   }
 }
