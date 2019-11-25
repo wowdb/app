@@ -34,7 +34,7 @@ export const Landing: NavigationStackScreenComponent = ({
           autoCapitalize={false}
           autoCorrect={false}
           onChange={query => setQuery(query)}
-          placeholder="The Eternal Place"
+          placeholder={classic ? 'Molten Core' : 'The Eternal Place'}
           value={query}
         />
         <Button
