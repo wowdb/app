@@ -1,6 +1,16 @@
 {
   "name": "wowdb",
   "private": true,
+  "license": "MIT",
+  "author": {
+    "name": "Ali Zahid",
+    "email": "ali.zahid@live.com",
+    "url": "https://alizahid.dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wowdb/app"
+  },
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios --simulator 'iPhone 11 Pro Max'",
