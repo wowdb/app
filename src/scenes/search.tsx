@@ -4,7 +4,14 @@ import { Dimensions, FlatList, StyleSheet, Text, View } from 'react-native'
 import { SafeAreaView } from 'react-navigation'
 import { NavigationStackScreenComponent } from 'react-navigation-stack'
 
-import { NavBar, Result, Separator, Spinner, Touchable } from '../components'
+import {
+  NavBar,
+  NotFound,
+  Result,
+  Separator,
+  Spinner,
+  Touchable
+} from '../components'
 import { wowhead } from '../lib'
 import { colors, fonts, fontWeights, layout } from '../styles'
 import { WowheadResults } from '../types'
@@ -57,6 +64,10 @@ export const Search: NavigationStackScreenComponent<Props> = ({
 
   if (loading) {
     return <Spinner full />
+  }
+
+  if (results.length === 0) {
+    return <NotFound />
   }
 
   const { width } = Dimensions.get('window')

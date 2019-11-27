@@ -8,6 +8,7 @@ import { img_link } from '../assets'
 import {
   Comment,
   NavBar,
+  NotFound,
   Separator,
   SortComments,
   Spinner
@@ -56,6 +57,10 @@ export const Comments: NavigationStackScreenComponent<Props> = ({
 
   if (loading) {
     return <Spinner full />
+  }
+
+  if (comments.length === 0) {
+    return <NotFound />
   }
 
   return (

@@ -1,6 +1,7 @@
 export { Button } from './button'
 export { Comment } from './comment'
 export { NavBar } from './nav-bar'
+export { NotFound } from './not-found'
 export { Result } from './result'
 export { Separator } from './separator'
 export { SortComments } from './sort-comments'
