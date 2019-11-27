@@ -35,3 +35,6 @@ export interface FactionSearchResult {
 }
 
 export type IconType = 'default' | 'follower' | 'faction'
+
+export type SortField = 'date' | 'rating'
+export type SortOrder = 'asc' | 'desc'

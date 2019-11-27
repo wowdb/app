@@ -5,37 +5,50 @@ import { img } from '../lib'
 import { colors, fonts, fontWeights, layout, quality } from '../styles'
 import { FactionSearchResult, IconType } from '../types'
 import { Icon } from './icon'
+import { Touchable } from './touchable'
 
-const Base: FunctionComponent = ({ children }) => (
-  <View style={styles.main}>{children}</View>
+interface BaseProps {
+  onPress: () => void
+}
+
+const Base: FunctionComponent<BaseProps> = ({ children, onPress }) => (
+  <Touchable style={styles.main} onPress={onPress}>
+    {children}
+  </Touchable>
 )
 
 interface BaseWithIconProps {
   icon: string
   type?: IconType
+
+  onPress: () => void
 }
 
 const BaseWithIcon: FunctionComponent<BaseWithIconProps> = ({
   children,
   icon,
-  type = 'default'
+  type = 'default',
+  onPress
 }) => (
-  <View style={styles.main}>
+  <Touchable style={styles.main} onPress={onPress}>
     <Icon style={styles.image} icon={icon} type={type} />
     {children}
-  </View>
+  </Touchable>
 )
 
 interface BaseWithFactionProps {
   alliance: FactionSearchResult
   horde: FactionSearchResult
+
+  onPress: () => void
 }
 
 const BaseWithFaction: FunctionComponent<BaseWithFactionProps> = ({
   alliance,
-  horde
+  horde,
+  onPress
 }) => (
-  <>
+  <Touchable onPress={onPress}>
     <View style={styles.main}>
       <Icon style={styles.image} icon={alliance.icon} type="follower" />
       <View style={styles.details}>
@@ -65,15 +78,17 @@ const BaseWithFaction: FunctionComponent<BaseWithFactionProps> = ({
         />
       </View>
     </View>
-  </>
+  </Touchable>
 )
 
 interface Props {
   data: any
   type: string
+
+  onPress: () => void
 }
 
-export const Result: FunctionComponent<Props> = ({ data, type }) => {
+export const Result: FunctionComponent<Props> = ({ data, type, onPress }) => {
   switch (type) {
     case 'abilities':
     case 'artifact-traits':
@@ -85,7 +100,7 @@ export const Result: FunctionComponent<Props> = ({ data, type }) => {
     case 'specialization-abilities':
     case 'uncategorized-spells':
       return (
-        <BaseWithIcon icon={data.icon}>
+        <BaseWithIcon icon={data.icon} onPress={onPress}>
           <View style={styles.details}>
             <Text style={styles.name}>{data.name}</Text>
           </View>
@@ -96,7 +111,7 @@ export const Result: FunctionComponent<Props> = ({ data, type }) => {
     case 'items':
     case 'talents':
       return (
-        <BaseWithIcon icon={data.icon}>
+        <BaseWithIcon icon={data.icon} onPress={onPress}>
           <View style={styles.details}>
             <Text
               style={[
@@ -127,7 +142,7 @@ export const Result: FunctionComponent<Props> = ({ data, type }) => {
     case 'titles':
     case 'zones':
       return (
-        <Base>
+        <Base onPress={onPress}>
           <View style={styles.details}>
             <Text style={styles.name}>{data.name}</Text>
           </View>
@@ -136,7 +151,10 @@ export const Result: FunctionComponent<Props> = ({ data, type }) => {
 
     case 'champions':
       return (
-        <BaseWithIcon icon={data.portraithorde} type="follower">
+        <BaseWithIcon
+          icon={data.portraithorde}
+          type="follower"
+          onPress={onPress}>
           <View style={styles.details}>
             <Text style={styles.name}>{data.namehorde}</Text>
           </View>
@@ -147,7 +165,7 @@ export const Result: FunctionComponent<Props> = ({ data, type }) => {
     case 'mission-abilities':
     case 'threats':
       return (
-        <BaseWithIcon icon={data.icon}>
+        <BaseWithIcon icon={data.icon} onPress={onPress}>
           <View style={styles.details}>
             <Text style={styles.name}>{data.name}</Text>
             {!!data.description && (
@@ -168,13 +186,14 @@ export const Result: FunctionComponent<Props> = ({ data, type }) => {
             icon: data.portraithorde,
             name: data.namehorde
           }}
+          onPress={onPress}
         />
       )
 
     case 'item-sets':
     case 'transmog-sets':
       return (
-        <Base>
+        <Base onPress={onPress}>
           <View style={styles.details}>
             <Text style={styles.name}>{data.name}</Text>
             <View style={styles.pieces}>
@@ -194,7 +213,7 @@ export const Result: FunctionComponent<Props> = ({ data, type }) => {
     case 'missions':
     case 'quests':
       return (
-        <Base>
+        <Base onPress={onPress}>
           <View style={styles.details}>
             <Text style={styles.name}>{data.name}</Text>
             {!!data.description && (
@@ -206,7 +225,7 @@ export const Result: FunctionComponent<Props> = ({ data, type }) => {
 
     case 'professions':
       return (
-        <Base>
+        <Base onPress={onPress}>
           <View style={styles.details}>
             <Text style={styles.name}>{data.name}</Text>
             {data.reagents && (
@@ -232,15 +251,7 @@ export const Result: FunctionComponent<Props> = ({ data, type }) => {
       )
 
     default:
-      return (
-        <Base>
-          <View style={styles.details}>
-            <Text style={styles.description}>
-              {JSON.stringify(data, null, 2)}
-            </Text>
-          </View>
-        </Base>
-      )
+      return null
   }
 }
 

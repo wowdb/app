@@ -15,6 +15,10 @@ export const fonts = {
     ...human.bodyObject,
     color: iOSColors.white
   },
+  small: {
+    ...human.subheadObject,
+    color: iOSColors.white
+  },
   subtitle: {
     ...human.title2Object,
     color: iOSColors.white

@@ -15,7 +15,7 @@ interface Props {
 }
 
 export const Search: NavigationStackScreenComponent<Props> = ({
-  navigation: { getParam }
+  navigation: { getParam, navigate }
 }) => {
   const classic = getParam('classic')
   const query = getParam('query')
@@ -109,7 +109,18 @@ export const Search: NavigationStackScreenComponent<Props> = ({
             keyExtractor={item => String(item.id)}
             ItemSeparatorComponent={Separator}
             renderItem={({ item: data }) => (
-              <Result data={data} type={item.type} />
+              <Result
+                data={data}
+                type={item.type}
+                onPress={() =>
+                  navigate('Comments', {
+                    classic,
+                    id: data.id,
+                    title: data.name || data.namehorde,
+                    type: item.template
+                  })
+                }
+              />
             )}
           />
         )}
