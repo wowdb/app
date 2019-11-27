@@ -32,7 +32,7 @@ export const Landing: NavigationStackScreenComponent = ({
 
   return (
     <SafeAreaView
-      style={styles.main}
+      style={styles.safe}
       forceInset={{
         bottom: 'always',
         top: 'always'
@@ -106,9 +106,12 @@ const styles = StyleSheet.create({
     textAlign: 'right'
   },
   main: {
-    backgroundColor: colors.primary,
     flex: 1,
     justifyContent: 'flex-end'
+  },
+  safe: {
+    backgroundColor: colors.primary,
+    flex: 1
   },
   title: {
     ...fonts.title,
