@@ -1,6 +1,6 @@
 import { cloneDeep, orderBy } from 'lodash'
 import React, { useEffect, useState } from 'react'
-import { FlatList, Linking, StyleSheet } from 'react-native'
+import { FlatList, Linking, StyleSheet, Text, View } from 'react-native'
 import { SafeAreaView } from 'react-navigation'
 import { NavigationStackScreenComponent } from 'react-navigation-stack'
 
@@ -14,7 +14,7 @@ import {
   Spinner
 } from '../components'
 import { wowhead } from '../lib'
-import { colors } from '../styles'
+import { colors, fonts, layout } from '../styles'
 import { SortField, SortOrder, WowheadComment } from '../types'
 
 interface Props {
@@ -29,6 +29,7 @@ export const Comments: NavigationStackScreenComponent<Props> = ({
 }) => {
   const classic = getParam('classic')
   const id = getParam('id')
+  const title = getParam('title')
   const type = getParam('type')
 
   const [loading, setLoading] = useState(false)
@@ -70,6 +71,10 @@ export const Comments: NavigationStackScreenComponent<Props> = ({
         bottom: 'always',
         top: 'never'
       }}>
+      <View style={styles.header}>
+        <Text style={styles.title}>{title}</Text>
+        <Text style={styles.type}>{type}</Text>
+      </View>
       <SortComments
         sortField={sortField}
         sortOrder={sortOrder}
@@ -92,7 +97,6 @@ export const Comments: NavigationStackScreenComponent<Props> = ({
 Comments.navigationOptions = ({ navigation: { getParam } }) => {
   const classic = getParam('classic')
   const id = getParam('id')
-  const title = getParam('title')
   const type = getParam('type')
 
   let separator = '='
@@ -115,16 +119,30 @@ Comments.navigationOptions = ({ navigation: { getParam } }) => {
           onPress: () => Linking.openURL(uri)
         }}
         back
-        title={title}
+        title="Comments"
       />
     )
   }
 }
 
 const styles = StyleSheet.create({
+  header: {
+    backgroundColor: colors.secondary,
+    borderBottomColor: colors.border,
+    borderBottomWidth: 1,
+    padding: layout.margin
+  },
   main: {
     backgroundColor: colors.primary,
     flex: 1,
     justifyContent: 'flex-end'
+  },
+  title: {
+    ...fonts.subtitle
+  },
+  type: {
+    ...fonts.small,
+    color: colors.gray,
+    marginTop: layout.padding
   }
 })

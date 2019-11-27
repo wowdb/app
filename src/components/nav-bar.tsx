@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
   },
   main: {
     alignItems: 'center',
-    backgroundColor: colors.black
+    backgroundColor: colors.secondary
   },
   right: {
     bottom: 0,
