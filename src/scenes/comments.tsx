@@ -1,6 +1,15 @@
 import { cloneDeep, orderBy } from 'lodash'
 import React, { useEffect, useState } from 'react'
-import { FlatList, Linking, StyleSheet, Text, View } from 'react-native'
+import {
+  FlatList,
+  LayoutAnimation,
+  Linking,
+  Platform,
+  StyleSheet,
+  Text,
+  UIManager,
+  View
+} from 'react-native'
 import { SafeAreaView } from 'react-navigation'
 import { NavigationStackScreenComponent } from 'react-navigation-stack'
 
@@ -37,6 +46,16 @@ export const Comments: NavigationStackScreenComponent<Props> = ({
   const [sortField, setSortField] = useState<SortField>('date')
   const [sortOrder, setSortOrder] = useState<SortOrder>('desc')
 
+  const [visible, setVisible] = useState(true)
+
+  useEffect(() => {
+    if (Platform.OS === 'android') {
+      if (UIManager.setLayoutAnimationEnabledExperimental) {
+        UIManager.setLayoutAnimationEnabledExperimental(true)
+      }
+    }
+  }, [])
+
   useEffect(() => {
     setLoading(true)
 
@@ -71,10 +90,12 @@ export const Comments: NavigationStackScreenComponent<Props> = ({
         bottom: 'always',
         top: 'never'
       }}>
-      <View style={styles.header}>
-        <Text style={styles.title}>{title}</Text>
-        <Text style={styles.type}>{type}</Text>
-      </View>
+      {visible && (
+        <View style={styles.header}>
+          <Text style={styles.type}>{type.replace(/-/g, ' ')}</Text>
+          <Text style={styles.title}>{title}</Text>
+        </View>
+      )}
       <SortComments
         sortField={sortField}
         sortOrder={sortOrder}
@@ -88,6 +109,21 @@ export const Comments: NavigationStackScreenComponent<Props> = ({
         initialNumToRender={10}
         ItemSeparatorComponent={Separator}
         keyExtractor={item => String(item.id)}
+        onScroll={event => {
+          if (event.nativeEvent.contentOffset.y > 200) {
+            if (visible) {
+              LayoutAnimation.configureNext(
+                LayoutAnimation.Presets.easeInEaseOut
+              )
+
+              setVisible(false)
+            }
+          } else if (!visible) {
+            LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
+
+            setVisible(true)
+          }
+        }}
         renderItem={({ item }) => <Comment comment={item} />}
       />
     </SafeAreaView>
@@ -143,6 +179,6 @@ const styles = StyleSheet.create({
   type: {
     ...fonts.small,
     color: colors.gray,
-    marginTop: layout.padding
+    marginBottom: layout.padding
   }
 })
