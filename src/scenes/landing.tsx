@@ -1,5 +1,13 @@
 import React, { useState } from 'react'
-import { Image, StyleSheet, Switch, Text, View } from 'react-native'
+import {
+  Image,
+  KeyboardAvoidingView,
+  Platform,
+  StyleSheet,
+  Switch,
+  Text,
+  View
+} from 'react-native'
 import { SafeAreaView } from 'react-navigation'
 import { NavigationStackScreenComponent } from 'react-navigation-stack'
 
@@ -13,6 +21,15 @@ export const Landing: NavigationStackScreenComponent = ({
   const [classic, setClassic] = useState(false)
   const [query, setQuery] = useState('')
 
+  const search = () => {
+    if (query.length > 1) {
+      navigate('Search', {
+        classic,
+        query
+      })
+    }
+  }
+
   return (
     <SafeAreaView
       style={styles.main}
@@ -20,45 +37,45 @@ export const Landing: NavigationStackScreenComponent = ({
         bottom: 'always',
         top: 'always'
       }}>
-      <View style={styles.content}>
-        <Image style={styles.wowdb} source={img_wowdb} />
-        <Text style={styles.title}>WoWdb</Text>
-        <Text style={styles.description}>
-          WoWdb lets you search for World of Warcraft quests, achievements,
-          items, spells, and more. It also supports WoW Classic and lets you
-          read comments from Wowhead.
-        </Text>
-      </View>
-      <View style={styles.footer}>
-        <TextBox
-          autoCapitalize={false}
-          autoCorrect={false}
-          onChange={query => setQuery(query)}
-          placeholder={classic ? 'Molten Core' : 'The Eternal Place'}
-          value={query}
-        />
-        <Button
-          style={styles.button}
-          label={classic ? 'Search classic' : 'Search'}
-          onPress={() => {
-            if (query.length > 1) {
-              navigate('Search', {
-                classic,
-                query
-              })
-            }
-          }}
-        />
-        <View style={styles.toggle}>
-          <Text style={styles.label}>Classic</Text>
-          <Switch
-            ios_backgroundColor={colors.black}
-            onValueChange={classic => setClassic(classic)}
-            trackColor={{ false: colors.black, true: colors.accent }}
-            value={classic}
-          />
+      <KeyboardAvoidingView
+        style={styles.main}
+        behavior="padding"
+        enabled={Platform.OS === 'ios'}>
+        <View style={styles.content}>
+          <Image style={styles.wowdb} source={img_wowdb} />
+          <Text style={styles.title}>WoWdb</Text>
+          <Text style={styles.description}>
+            WoWdb lets you search for World of Warcraft quests, achievements,
+            items, spells, and more. It also supports WoW Classic and lets you
+            read comments from Wowhead.
+          </Text>
         </View>
-      </View>
+        <View style={styles.footer}>
+          <TextBox
+            autoCapitalize="none"
+            autoCorrect={false}
+            onChangeText={query => setQuery(query)}
+            placeholder={classic ? 'Molten Core' : 'The Eternal Place'}
+            returnKeyType="search"
+            onSubmitEditing={search}
+            value={query}
+          />
+          <Button
+            style={styles.button}
+            label={classic ? 'Search classic' : 'Search'}
+            onPress={search}
+          />
+          <View style={styles.toggle}>
+            <Text style={styles.label}>Classic</Text>
+            <Switch
+              ios_backgroundColor={colors.black}
+              onValueChange={classic => setClassic(classic)}
+              trackColor={{ false: colors.black, true: colors.accent }}
+              value={classic}
+            />
+          </View>
+        </View>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   )
 }

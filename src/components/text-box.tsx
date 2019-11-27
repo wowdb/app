@@ -1,33 +1,31 @@
 import React, { FunctionComponent } from 'react'
-import { StyleSheet, TextInput, ViewStyle } from 'react-native'
+import { StyleSheet, TextInput, TextInputProps, ViewStyle } from 'react-native'
 
 import { colors, fonts, layout } from '../styles'
 
 interface Props {
-  autoCapitalize?: boolean
-  autoCorrect?: boolean
-  placeholder: string
   style?: ViewStyle
-  value: string
-
-  onChange: (value: string) => void
 }
 
-export const TextBox: FunctionComponent<Props> = ({
+export const TextBox: FunctionComponent<Props & TextInputProps> = ({
   autoCapitalize,
   autoCorrect,
+  onChangeText,
+  onSubmitEditing,
   placeholder,
+  returnKeyType,
   style,
-  value,
-  onChange
+  value
 }) => (
   <TextInput
     style={[styles.main, style]}
-    autoCapitalize={autoCapitalize ? 'sentences' : 'none'}
+    autoCapitalize={autoCapitalize}
     autoCorrect={autoCorrect}
-    onChangeText={value => onChange(value)}
+    onChangeText={onChangeText}
+    onSubmitEditing={onSubmitEditing}
     placeholder={placeholder}
     placeholderTextColor={colors.gray}
+    returnKeyType={returnKeyType}
     value={value}
   />
 )
