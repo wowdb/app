@@ -1,10 +1,10 @@
 import React, { FunctionComponent } from 'react'
 import { Image, StyleSheet, Text, View, ViewStyle } from 'react-native'
 
+import { img_border } from '../assets'
 import { img } from '../lib'
 import { colors, fonts, fontWeights, textShadow } from '../styles'
 import { IconType } from '../types'
-import { img_border } from '../assets'
 
 interface Props {
   icon: string
