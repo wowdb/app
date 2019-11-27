@@ -18,6 +18,7 @@
     "start": "react-native start"
   },
   "dependencies": {
+    "@sentry/react-native": "^1.1.0",
     "axios": "^0.19.0",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
@@ -37,7 +38,9 @@
     "@babel/runtime": "^7.7.4",
     "@react-native-community/eslint-config": "^0.0.5",
     "@types/lodash": "^4.14.149",
+    "@types/node": "^12.12.14",
     "@types/react-native": "^0.60.23",
+    "@types/react-native-dotenv": "^0.2.0",
     "@types/react-native-htmlview": "^0.12.2",
     "eslint": "^6.7.1",
     "eslint-config-prettier": "^6.7.0",
@@ -50,6 +53,7 @@
     "metro-react-native-babel-preset": "^0.57.0",
     "prettier": "^1.19.1",
     "pretty-quick": "^2.0.1",
+    "react-native-dotenv": "^0.2.0",
     "typescript": "^3.7.2"
   }
 }

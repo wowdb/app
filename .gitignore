@@ -1,4 +1,4 @@
-# OSX
+# macOS
 #
 .DS_Store
 
@@ -41,6 +41,7 @@ npm-debug.log
 yarn-error.log
 
 # BUCK
+#
 buck-out/
 \.buckd/
 *.keystore
@@ -52,13 +53,24 @@ buck-out/
 # screenshots whenever they are needed.
 # For more information about the recommended setup visit:
 # https://docs.fastlane.tools/best-practices/source-control/
-
+#
 */fastlane/report.xml
 */fastlane/Preview.html
 */fastlane/screenshots
 
 # Bundle artifact
+#
 *.jsbundle
 
 # CocoaPods
+#
 /ios/Pods/
+
+# Sentry
+#
+sentry.properties
+
+# Environment variables
+#
+.env
+.env.production

@@ -223,6 +223,12 @@ PODS:
     - React
   - RNScreens (2.0.0-alpha.12):
     - React
+  - RNSentry (1.1.0):
+    - React
+    - Sentry (~> 4.4.0)
+  - Sentry (4.4.2):
+    - Sentry/Core (= 4.4.2)
+  - Sentry/Core (4.4.2)
   - Yoga (1.14.0)
 
 DEPENDENCIES:
@@ -256,11 +262,13 @@ DEPENDENCIES:
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
+  - "RNSentry (from `../node_modules/@sentry/react-native`)"
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
   trunk:
     - boost-for-react-native
+    - Sentry
 
 EXTERNAL SOURCES:
   DoubleConversion:
@@ -317,6 +325,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
     :path: "../node_modules/react-native-screens"
+  RNSentry:
+    :path: "../node_modules/@sentry/react-native"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -349,8 +359,10 @@ SPEC CHECKSUMS:
   RNGestureHandler: 7add966bb5d90ee8cf38d4341f87814474357972
   RNReanimated: b2ab0b693dddd2339bd2f300e770f6302d2e960c
   RNScreens: 254da4b84f25971cbb30ed3ddc84131f23cac812
+  RNSentry: 932ac1c8b2f581b1c8be5812f88ff556c99e7fb7
+  Sentry: bba998b0fb157fdd6596aa73290a9d67ae47be79
   Yoga: f2a7cd4280bfe2cca5a7aed98ba0eb3d1310f18b
 
-PODFILE CHECKSUM: 21789fb5132ba72c277fd67ae37c83ab0ad6683c
+PODFILE CHECKSUM: 411620f2b2e20d5a04f99bb21b9a3c0915de89d0
 
 COCOAPODS: 1.8.4
