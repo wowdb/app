@@ -60,11 +60,7 @@ export const Landing: NavigationStackScreenComponent = ({
             onSubmitEditing={search}
             value={query}
           />
-          <Button
-            style={styles.button}
-            label={classic ? 'Search classic' : 'Search'}
-            onPress={search}
-          />
+          <Button style={styles.button} label="Search" onPress={search} />
           <View style={styles.toggle}>
             <Text style={styles.label}>Classic</Text>
             <Switch
