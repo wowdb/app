@@ -66,7 +66,10 @@ export const Landing: NavigationStackScreenComponent = ({
             <Switch
               ios_backgroundColor={colors.black}
               onValueChange={classic => setClassic(classic)}
-              trackColor={{ false: colors.black, true: colors.accent }}
+              trackColor={{
+                false: colors.black,
+                true: colors.accent
+              }}
               value={classic}
             />
           </View>
