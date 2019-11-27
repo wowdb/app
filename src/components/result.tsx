@@ -3,7 +3,7 @@ import { Image, StyleSheet, Text, View } from 'react-native'
 
 import { img } from '../lib'
 import { colors, fonts, fontWeights, layout, quality } from '../styles'
-import { FactionSearchResult, IconType } from '../types'
+import { FactionSearchResult, IconType, WowheadResult } from '../types'
 import { Icon } from './icon'
 import { Touchable } from './touchable'
 
@@ -82,7 +82,7 @@ const BaseWithFaction: FunctionComponent<BaseWithFactionProps> = ({
 )
 
 interface Props {
-  data: any
+  data: WowheadResult
   type: string
 
   onPress: () => void
@@ -198,16 +198,18 @@ export const Result: FunctionComponent<Props> = ({ data, type, onPress }) => {
         <Base onPress={onPress}>
           <View style={styles.details}>
             <Text style={styles.name}>{data.name}</Text>
-            <View style={styles.pieces}>
-              {data.pieces.map(({ icon }: { icon: string }, index: number) => (
-                <Icon
-                  style={styles.piece}
-                  key={index}
-                  icon={icon}
-                  type="default"
-                />
-              ))}
-            </View>
+            {data.pieces && (
+              <View style={styles.pieces}>
+                {data.pieces.map(({ icon }, index) => (
+                  <Icon
+                    style={styles.piece}
+                    key={index}
+                    icon={icon}
+                    type="default"
+                  />
+                ))}
+              </View>
+            )}
           </View>
         </Base>
       )
@@ -232,20 +234,15 @@ export const Result: FunctionComponent<Props> = ({ data, type, onPress }) => {
             <Text style={styles.name}>{data.name}</Text>
             {data.reagents && (
               <View style={styles.pieces}>
-                {data.reagents.map(
-                  (
-                    { icon, quantity }: { icon: string; quantity: number },
-                    index: number
-                  ) => (
-                    <Icon
-                      key={index}
-                      style={styles.piece}
-                      icon={icon}
-                      quantity={quantity}
-                      type="default"
-                    />
-                  )
-                )}
+                {data.reagents.map(({ icon, quantity }, index) => (
+                  <Icon
+                    key={index}
+                    style={styles.piece}
+                    icon={icon}
+                    quantity={quantity}
+                    type="default"
+                  />
+                ))}
               </View>
             )}
           </View>

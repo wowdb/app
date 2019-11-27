@@ -1,19 +1,19 @@
 import { ImageSourcePropType } from 'react-native'
 
 export interface WowheadResult {
-  description?: string
-  icon?: string
+  description: string
+  icon: string
   id: number
-  level?: string
-  name?: string
-  namealliance?: string
-  namehorde?: string
-  pieces?: number[]
-  points?: string
-  portraitalliance?: string
-  portraithorde?: string
-  quality?: string
-  reagents?: string[]
+  level: string
+  name: string
+  namealliance: string
+  namehorde: string
+  pieces?: Piece[]
+  points: number
+  portraitalliance: string
+  portraithorde: string
+  quality: number
+  reagents?: Reagent[]
 }
 
 export interface WowheadResults {
@@ -34,6 +34,15 @@ export interface WowheadComment {
 export interface FactionSearchResult {
   icon: string
   name: string
+}
+
+export interface Piece {
+  icon: string
+}
+
+export interface Reagent {
+  icon: string
+  quantity: number
 }
 
 export type IconType = 'default' | 'follower' | 'faction'
