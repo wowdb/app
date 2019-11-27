@@ -1,9 +1,11 @@
 import axios from 'axios'
 
 class Wowhead {
+  uri = __DEV__ ? 'http://localhost:3000' : 'https://wowdb.alizahid.now.sh'
+
   async search(query: string, classic: boolean = false) {
     const { data } = await axios(
-      `http://localhost:3000/api/search?query=${encodeURIComponent(
+      `${this.uri}/api/search?query=${encodeURIComponent(
         query
       )}&classic=${classic}`
     )
@@ -13,7 +15,7 @@ class Wowhead {
 
   async comments(type: string, id: number, classic: boolean = false) {
     const { data } = await axios(
-      `http://localhost:3000/api/comments?type=${type}&id=${id}&classic=${classic}`
+      `${this.uri}/api/comments?type=${type}&id=${id}&classic=${classic}`
     )
 
     return data
