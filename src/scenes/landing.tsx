@@ -22,7 +22,7 @@ export const Landing: NavigationStackScreenComponent = ({
   const [query, setQuery] = useState('')
 
   const search = () => {
-    if (query.length > 1) {
+    if (query.length > 3) {
       navigate('Search', {
         classic,
         query
