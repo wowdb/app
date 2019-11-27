@@ -1,7 +1,12 @@
 import axios from 'axios'
+import { Platform } from 'react-native'
 
 class Wowhead {
-  uri = __DEV__ ? 'http://localhost:3000' : 'https://wowdb.alizahid.now.sh'
+  uri = __DEV__
+    ? Platform.OS === 'android'
+      ? 'http://10.0.2.2:3000'
+      : 'http://localhost:3000'
+    : 'https://wowdb.alizahid.now.sh'
 
   async search(query: string, classic: boolean = false) {
     const { data } = await axios(
