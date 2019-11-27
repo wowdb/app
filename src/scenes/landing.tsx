@@ -45,10 +45,12 @@ export const Landing: NavigationStackScreenComponent = ({
           <Image style={styles.wowdb} source={img_wowdb} />
           <Text style={styles.title}>WoWdb</Text>
           <Text style={styles.description}>
-            WoWdb lets you search for World of Warcraft quests, achievements,
-            items, spells, and more. It also supports WoW Classic and lets you
-            read comments from Wowhead.
+            Search for items, quests, NPCs, and more
           </Text>
+          <Text style={styles.description}>
+            Read comments to guide you through a stricky achievement
+          </Text>
+          <Text style={styles.description}>View details on Wowhead</Text>
         </View>
         <View style={styles.footer}>
           <TextBox
@@ -96,6 +98,7 @@ const styles = StyleSheet.create({
   description: {
     ...fonts.body,
     color: colors.midGray,
+    marginTop: layout.padding,
     textAlign: 'center'
   },
   footer: {
@@ -120,7 +123,8 @@ const styles = StyleSheet.create({
     ...fonts.title,
     ...fontWeights.semibold,
     color: colors.white,
-    marginVertical: layout.margin
+    marginBottom: layout.padding,
+    marginTop: layout.margin
   },
   toggle: {
     alignItems: 'center',
