@@ -124,7 +124,9 @@ export const Comments: NavigationStackScreenComponent<Props> = ({
             setVisible(true)
           }
         }}
-        renderItem={({ item }) => <Comment comment={item} />}
+        renderItem={({ item }) => (
+          <Comment comment={item} sortField={sortField} sortOrder={sortOrder} />
+        )}
       />
     </SafeAreaView>
   )

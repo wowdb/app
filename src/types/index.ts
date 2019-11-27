@@ -24,10 +24,10 @@ export interface WowheadResults {
 
 export interface WowheadComment {
   body: string
+  comments?: WowheadComment[]
   date: string
   id: number
   rating: number
-  replies?: WowheadComment[]
   user: string
 }
 
