@@ -32,11 +32,15 @@ export const Comment: FunctionComponent<Props> = ({
           <Text style={styles.label}>{comment.user}</Text>
           <Text style={styles.label}>{comment.rating}</Text>
           <Text style={styles.label}>{moment(comment.date).fromNow()}</Text>
-          <Touchable style={styles.toggle} onPress={() => setVisible(!visible)}>
-            <Text style={[styles.label, styles.toggleLabel]}>
-              {visible ? 'Hide' : 'Show'} replies
-            </Text>
-          </Touchable>
+          {comment.comments && comment.comments.length > 0 && (
+            <Touchable
+              style={styles.toggle}
+              onPress={() => setVisible(!visible)}>
+              <Text style={[styles.label, styles.toggleLabel]}>
+                {visible ? 'Hide' : 'Show'} replies
+              </Text>
+            </Touchable>
+          )}
         </View>
       </View>
       {visible &&
