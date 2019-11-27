@@ -1,9 +1,10 @@
 import { cloneDeep, orderBy } from 'lodash'
 import React, { useEffect, useState } from 'react'
-import { FlatList, StyleSheet } from 'react-native'
+import { FlatList, Linking, StyleSheet } from 'react-native'
 import { SafeAreaView } from 'react-navigation'
 import { NavigationStackScreenComponent } from 'react-navigation-stack'
 
+import { img_link } from '../assets'
 import {
   Comment,
   NavBar,
@@ -83,9 +84,37 @@ export const Comments: NavigationStackScreenComponent<Props> = ({
   )
 }
 
-Comments.navigationOptions = ({ navigation: { getParam } }) => ({
-  header: () => <NavBar back title={getParam('title')} />
-})
+Comments.navigationOptions = ({ navigation: { getParam } }) => {
+  const classic = getParam('classic')
+  const id = getParam('id')
+  const title = getParam('title')
+  const type = getParam('type')
+
+  let separator = '='
+
+  if (
+    ['azerite-essence', 'azerite-essence-power', 'storyline'].includes(type)
+  ) {
+    separator = '/'
+  }
+
+  const uri = `https://${
+    classic ? 'classic' : 'www'
+  }.wowhead.com/${type}${separator}${id}`
+
+  return {
+    header: () => (
+      <NavBar
+        action={{
+          icon: img_link,
+          onPress: () => Linking.openURL(uri)
+        }}
+        back
+        title={title}
+      />
+    )
+  }
+}
 
 const styles = StyleSheet.create({
   main: {

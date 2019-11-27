@@ -5,14 +5,16 @@ import { useNavigation } from 'react-navigation-hooks'
 
 import { img_left } from '../assets'
 import { colors, fonts, fontWeights, layout } from '../styles'
+import { NavBarAction } from '../types'
 import { Touchable } from './touchable'
 
 interface Props {
+  action?: NavBarAction
   back?: boolean
   title: string
 }
 
-export const NavBar: FunctionComponent<Props> = ({ back, title }) => {
+export const NavBar: FunctionComponent<Props> = ({ action, back, title }) => {
   const { goBack } = useNavigation()
   return (
     <SafeAreaView
@@ -25,6 +27,11 @@ export const NavBar: FunctionComponent<Props> = ({ back, title }) => {
       {back && (
         <Touchable style={styles.left} onPress={() => goBack()}>
           <Image style={styles.icon} source={img_left} />
+        </Touchable>
+      )}
+      {action && (
+        <Touchable style={styles.right} onPress={() => action.onPress()}>
+          <Image style={styles.icon} source={action.icon} />
         </Touchable>
       )}
     </SafeAreaView>
@@ -45,6 +52,11 @@ const styles = StyleSheet.create({
   main: {
     alignItems: 'center',
     backgroundColor: colors.black
+  },
+  right: {
+    bottom: 0,
+    position: 'absolute',
+    right: 0
   },
   title: {
     ...fonts.body,

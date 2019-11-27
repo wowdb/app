@@ -1,3 +1,5 @@
+import { ImageSourcePropType } from 'react-native'
+
 export interface WowheadResult {
   description?: string
   icon?: string
@@ -38,3 +40,8 @@ export type IconType = 'default' | 'follower' | 'faction'
 
 export type SortField = 'date' | 'rating'
 export type SortOrder = 'asc' | 'desc'
+
+export interface NavBarAction {
+  icon: ImageSourcePropType
+  onPress: () => void
+}

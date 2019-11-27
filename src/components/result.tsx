@@ -92,6 +92,8 @@ export const Result: FunctionComponent<Props> = ({ data, type, onPress }) => {
   switch (type) {
     case 'abilities':
     case 'artifact-traits':
+    case 'azerite-essence-power':
+    case 'azerite-essence':
     case 'battle-pet-abilities':
     case 'glyphs':
     case 'mounts':
