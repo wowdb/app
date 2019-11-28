@@ -13,7 +13,7 @@ import { NavigationStackScreenComponent } from 'react-navigation-stack'
 
 import { img_wowdb } from '../assets'
 import { Button, TextBox } from '../components'
-import { colors, fonts, fontWeights, layout } from '../styles'
+import { colors, fonts, layout } from '../styles'
 
 export const Landing: NavigationStackScreenComponent = ({
   navigation: { navigate }
@@ -121,7 +121,6 @@ const styles = StyleSheet.create({
   },
   title: {
     ...fonts.title,
-    ...fontWeights.semibold,
     color: colors.white,
     marginBottom: layout.padding,
     marginTop: layout.margin

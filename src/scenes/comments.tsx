@@ -1,9 +1,8 @@
-import { cloneDeep, orderBy } from 'lodash'
+import { cloneDeep, orderBy, upperCase } from 'lodash'
 import React, { useEffect, useState } from 'react'
 import {
   FlatList,
   LayoutAnimation,
-  Linking,
   Platform,
   StyleSheet,
   Text,
@@ -22,27 +21,27 @@ import {
   SortComments,
   Spinner
 } from '../components'
-import { wowhead } from '../lib'
-import { colors, fonts, layout } from '../styles'
+import { browser, wowhead } from '../lib'
+import { colors, fonts, fontWeights, layout } from '../styles'
 import { SortField, SortOrder, WowheadComment } from '../types'
 
 interface Props {
   classic: boolean
   id: number
-  title: string
   type: string
 }
 
 export const Comments: NavigationStackScreenComponent<Props> = ({
-  navigation: { getParam }
+  navigation: { getParam, push }
 }) => {
   const classic = getParam('classic')
   const id = getParam('id')
-  const title = getParam('title')
   const type = getParam('type')
 
   const [loading, setLoading] = useState(false)
   const [comments, setComments] = useState<WowheadComment[]>([])
+  const [title, setTitle] = useState<string>()
+
   const [sortField, setSortField] = useState<SortField>('date')
   const [sortOrder, setSortOrder] = useState<SortOrder>('desc')
 
@@ -59,9 +58,10 @@ export const Comments: NavigationStackScreenComponent<Props> = ({
   useEffect(() => {
     setLoading(true)
 
-    wowhead.comments(type, id, classic).then(comments => {
+    wowhead.comments(type, id, classic).then(({ comments, title }) => {
       setLoading(false)
       setComments(comments)
+      setTitle(title)
     })
   }, [classic, id, type])
 
@@ -92,7 +92,7 @@ export const Comments: NavigationStackScreenComponent<Props> = ({
       }}>
       {visible && (
         <View style={styles.header}>
-          <Text style={styles.type}>{type.replace(/-/g, ' ')}</Text>
+          <Text style={styles.type}>{upperCase(type.replace(/-/g, ' '))}</Text>
           <Text style={styles.title}>{title}</Text>
         </View>
       )}
@@ -125,7 +125,18 @@ export const Comments: NavigationStackScreenComponent<Props> = ({
           }
         }}
         renderItem={({ item }) => (
-          <Comment comment={item} sortField={sortField} sortOrder={sortOrder} />
+          <Comment
+            comment={item}
+            navigate={(classic, id, type) =>
+              push('Comments', {
+                classic,
+                id,
+                type
+              })
+            }
+            sortField={sortField}
+            sortOrder={sortOrder}
+          />
         )}
       />
     </SafeAreaView>
@@ -154,7 +165,7 @@ Comments.navigationOptions = ({ navigation: { getParam } }) => {
       <NavBar
         action={{
           icon: img_link,
-          onPress: () => Linking.openURL(uri)
+          onPress: () => browser.open(uri)
         }}
         back
         title="Comments"
@@ -180,6 +191,7 @@ const styles = StyleSheet.create({
   },
   type: {
     ...fonts.small,
+    ...fontWeights.semibold,
     color: colors.gray,
     marginBottom: layout.padding
   }

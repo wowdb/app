@@ -4,6 +4,7 @@ import React, { FunctionComponent, useState } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import HTMLView from 'react-native-htmlview'
 
+import { browser } from '../lib'
 import { colors, fonts, layout } from '../styles'
 import { SortField, SortOrder, WowheadComment } from '../types'
 import { Touchable } from './touchable'
@@ -12,20 +13,38 @@ interface Props {
   comment: WowheadComment
   sortField: SortField
   sortOrder: SortOrder
+
+  navigate: (classic: boolean, id: number, type: string) => void
 }
 
 export const Comment: FunctionComponent<Props> = ({
   comment,
   sortField,
-  sortOrder
+  sortOrder,
+  navigate
 }) => {
   const [visible, setVisible] = useState(false)
+
+  const openUri = (link: string) => {
+    const matches = link.match(/(\w+).wowhead.com\/([\w-]+)(\/|=)(\d+)/)
+
+    if (matches) {
+      const [, domain, type, , id] = matches
+
+      navigate(domain === 'classic', Number(id), type)
+
+      return
+    }
+
+    browser.open(link)
+  }
 
   return (
     <View>
       <View style={styles.main}>
         <HTMLView
           stylesheet={stylesheet}
+          onLinkPress={link => openUri(link)}
           value={`<div>${comment.body}</div>`}
         />
         <View style={styles.footer}>
@@ -49,6 +68,7 @@ export const Comment: FunctionComponent<Props> = ({
           <View key={index} style={styles.reply}>
             <HTMLView
               stylesheet={stylesheetReply}
+              onLinkPress={link => openUri(link)}
               value={`<div>${reply.body}</div>`}
             />
             <View style={styles.footer}>

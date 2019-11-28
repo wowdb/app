@@ -21,10 +21,12 @@ export const fonts = {
   },
   subtitle: {
     ...human.title2Object,
+    ...systemWeights.semibold,
     color: iOSColors.white
   },
   title: {
     ...human.largeTitleObject,
+    ...systemWeights.bold,
     color: iOSColors.white
   }
 }
