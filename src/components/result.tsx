@@ -164,6 +164,7 @@ export const Result: FunctionComponent<Props> = ({ data, type, onPress }) => {
       )
 
     case 'currencies':
+    case 'events':
     case 'mission-abilities':
     case 'threats':
       return (
@@ -250,6 +251,16 @@ export const Result: FunctionComponent<Props> = ({ data, type, onPress }) => {
       )
 
     default:
+      if (__DEV__) {
+        return (
+          <Base onPress={onPress}>
+            <View style={styles.details}>
+              <Text>{JSON.stringify(data, null, 2)}</Text>
+            </View>
+          </Base>
+        )
+      }
+
       return null
   }
 }
