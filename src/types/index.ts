@@ -14,6 +14,7 @@ export interface WowheadResult {
   portraithorde: string
   quality: number
   reagents?: Reagent[]
+  skill?: Skill
 }
 
 export interface WowheadResults {
@@ -45,6 +46,12 @@ export interface Reagent {
   quantity: number
 }
 
+export interface Skill {
+  icon?: string
+  id: number
+  name: string
+}
+
 export type IconType = 'default' | 'follower' | 'faction'
 
 export type SortField = 'date' | 'rating'
@@ -52,5 +59,6 @@ export type SortOrder = 'asc' | 'desc'
 
 export interface NavBarAction {
   icon: ImageSourcePropType
+
   onPress: () => void
 }

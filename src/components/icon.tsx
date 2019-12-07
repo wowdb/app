@@ -9,21 +9,26 @@ import { IconType } from '../types'
 interface Props {
   icon: string
   quantity?: number
+  size?: 'large' | 'small'
   style?: ViewStyle
-  type: IconType
+  type?: IconType
 }
 
 export const Icon: FunctionComponent<Props> = ({
   icon,
   quantity,
+  size = 'large',
   style,
-  type
+  type = 'default'
 }) => {
   return (
     <View style={[styles.image, style]}>
-      <Image style={styles.border} source={img_border} />
       <Image
-        style={styles.icon}
+        style={[styles.border, size === 'small' && styles.borderSmall]}
+        source={img_border}
+      />
+      <Image
+        style={[styles.icon, size === 'small' && styles.iconSmall]}
         source={{
           uri: img.getUri(type, icon)
         }}
@@ -40,11 +45,19 @@ const styles = StyleSheet.create({
     height: 68,
     width: 68
   },
+  borderSmall: {
+    height: 44,
+    width: 44
+  },
   icon: {
     backgroundColor: colors.black,
     height: 56,
     position: 'absolute',
     width: 56
+  },
+  iconSmall: {
+    height: 36,
+    width: 36
   },
   image: {
     alignItems: 'center',

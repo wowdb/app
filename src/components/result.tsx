@@ -19,6 +19,7 @@ const Base: FunctionComponent<BaseProps> = ({ children, onPress }) => (
 
 interface BaseWithIconProps {
   icon: string
+  size?: 'large' | 'small'
   type?: IconType
 
   onPress: () => void
@@ -27,11 +28,12 @@ interface BaseWithIconProps {
 const BaseWithIcon: FunctionComponent<BaseWithIconProps> = ({
   children,
   icon,
+  size = 'large',
   type = 'default',
   onPress
 }) => (
   <Touchable style={styles.main} onPress={onPress}>
-    <Icon style={styles.image} icon={icon} type={type} />
+    <Icon style={styles.image} icon={icon} type={type} size={size} />
     {children}
   </Touchable>
 )
@@ -202,12 +204,7 @@ export const Result: FunctionComponent<Props> = ({ data, type, onPress }) => {
             {data.pieces && (
               <View style={styles.pieces}>
                 {data.pieces.map(({ icon }, index) => (
-                  <Icon
-                    style={styles.piece}
-                    key={index}
-                    icon={icon}
-                    type="default"
-                  />
+                  <Icon style={styles.piece} key={index} icon={icon} />
                 ))}
               </View>
             )}
@@ -229,26 +226,33 @@ export const Result: FunctionComponent<Props> = ({ data, type, onPress }) => {
       )
 
     case 'professions':
-      return (
-        <Base onPress={onPress}>
-          <View style={styles.details}>
-            <Text style={styles.name}>{data.name}</Text>
-            {data.reagents && (
-              <View style={styles.pieces}>
-                {data.reagents.map(({ icon, quantity }, index) => (
-                  <Icon
-                    key={index}
-                    style={styles.piece}
-                    icon={icon}
-                    quantity={quantity}
-                    type="default"
-                  />
-                ))}
-              </View>
-            )}
-          </View>
-        </Base>
+      const profession = (
+        <View style={styles.details}>
+          <Text style={styles.name}>{data.name}</Text>
+          {data.reagents && (
+            <View style={styles.pieces}>
+              {data.reagents.map(({ icon, quantity }, index) => (
+                <Icon
+                  key={index}
+                  style={styles.piece}
+                  icon={icon}
+                  quantity={quantity}
+                />
+              ))}
+            </View>
+          )}
+        </View>
       )
+
+      if (data.skill && data.skill.icon) {
+        return (
+          <BaseWithIcon icon={data.skill.icon} size="small" onPress={onPress}>
+            {profession}
+          </BaseWithIcon>
+        )
+      }
+
+      return <Base onPress={onPress}>{profession}</Base>
 
     default:
       if (__DEV__) {
