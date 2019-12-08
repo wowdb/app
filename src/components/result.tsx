@@ -133,6 +133,11 @@ export const Result: FunctionComponent<Props> = ({ data, type, onPress }) => {
           {(data.points || data.level) > 0 && (
             <View style={styles.aside}>
               <Text style={styles.points}>{data.points || data.level}</Text>
+              {data.reqlevel && (
+                <Text style={[styles.points, styles.points2]}>
+                  {data.reqlevel}
+                </Text>
+              )}
             </View>
           )}
         </BaseWithIcon>
@@ -342,7 +347,8 @@ const styles = StyleSheet.create({
   },
   points: {
     ...fonts.body,
-    color: colors.gray
+    color: colors.gray,
+    textAlign: 'right'
   },
   points2: {
     marginTop: layout.padding
