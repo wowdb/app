@@ -144,7 +144,6 @@ export const Result: FunctionComponent<Props> = ({ data, type, onPress }) => {
     case 'objects':
     case 'storyline':
     case 'titles':
-    case 'zones':
       return (
         <Base onPress={onPress}>
           <View style={styles.details}>
@@ -218,10 +217,17 @@ export const Result: FunctionComponent<Props> = ({ data, type, onPress }) => {
         <Base onPress={onPress}>
           <View style={styles.details}>
             <Text style={styles.name}>{data.name}</Text>
-            {!!data.description && (
-              <Text style={styles.description}>{data.description}</Text>
+            {(!!data.description || !!data.type) && (
+              <Text style={styles.description}>
+                {data.description || data.type}
+              </Text>
             )}
           </View>
+          {!!data.reqlevel && (
+            <View style={styles.aside}>
+              <Text style={styles.points}>{data.reqlevel}</Text>
+            </View>
+          )}
         </Base>
       )
 
@@ -254,6 +260,27 @@ export const Result: FunctionComponent<Props> = ({ data, type, onPress }) => {
 
       return <Base onPress={onPress}>{profession}</Base>
 
+    case 'zones':
+      return (
+        <Base onPress={onPress}>
+          <View style={styles.details}>
+            <Text style={styles.name}>{data.name}</Text>
+            {!!data.zone && <Text style={styles.description}>{data.zone}</Text>}
+          </View>
+          {data.expansion && (
+            <View style={styles.aside}>
+              <Image
+                style={styles.expansion}
+                resizeMode="contain"
+                source={{
+                  uri: img.getUri('expansion', data.expansion.icon)
+                }}
+              />
+            </View>
+          )}
+        </Base>
+      )
+
     default:
       if (__DEV__) {
         return (
@@ -282,6 +309,10 @@ const styles = StyleSheet.create({
   details: {
     flex: 1,
     justifyContent: 'center'
+  },
+  expansion: {
+    height: 20,
+    width: 60
   },
   faction: {
     height: 15,
@@ -312,5 +343,8 @@ const styles = StyleSheet.create({
   points: {
     ...fonts.body,
     color: colors.gray
+  },
+  points2: {
+    marginTop: layout.padding
   }
 })

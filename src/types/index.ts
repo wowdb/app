@@ -2,6 +2,7 @@ import { ImageSourcePropType } from 'react-native'
 
 export interface WowheadResult {
   description: string
+  expansion?: Expansion
   icon: string
   id: number
   level: string
@@ -14,7 +15,10 @@ export interface WowheadResult {
   portraithorde: string
   quality: number
   reagents?: Reagent[]
+  reqlevel?: number
   skill?: Skill
+  type?: string
+  zone?: string
 }
 
 export interface WowheadResults {
@@ -37,6 +41,11 @@ export interface FactionSearchResult {
   name: string
 }
 
+export interface Expansion {
+  icon: string
+  name: string
+}
+
 export interface Piece {
   icon: string
 }
@@ -52,7 +61,7 @@ export interface Skill {
   name: string
 }
 
-export type IconType = 'default' | 'follower' | 'faction'
+export type IconType = 'default' | 'expansion' | 'follower' | 'faction'
 
 export type SortField = 'date' | 'rating'
 export type SortOrder = 'asc' | 'desc'
