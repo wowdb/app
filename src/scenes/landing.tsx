@@ -48,7 +48,7 @@ export const Landing: NavigationStackScreenComponent = ({
             Search for items, quests, NPCs, and more
           </Text>
           <Text style={styles.description}>
-            Read comments to guide you through a stricky achievement
+            Read comments to guide you through a tricky achievement
           </Text>
           <Text style={styles.description}>View details on Wowhead</Text>
         </View>
